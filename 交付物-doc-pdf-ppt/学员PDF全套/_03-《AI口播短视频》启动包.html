@@ -1,0 +1,815 @@
+<meta charset="utf-8"><style>
+@page { size:A4; margin:15mm 14mm 16mm 14mm; }
+@page :first { margin:0; }
+*{ box-sizing:border-box; }
+html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+body{ font-family:"PingFang SC","Helvetica Neue",Arial,sans-serif; color:#142233;
+      margin:0; font-size:10.5pt; line-height:1.5; }
+:root{ --cyan:#28c2e7; --blue:#0f75bc; --orange:#fcb040; --ink:#142233;
+       --slate:#5b6b7a; --paper:#f4f8fb; --lblue:#e3f2f9; }
+h1,h2,h3,h4{ margin:0; }
+.pb{ page-break-before:always; }
+.avoid{ page-break-inside:avoid; }
+
+/* cover full-bleed */
+.cover{ background:#142233; color:#fff; padding:40mm 20mm; min-height:297mm; }
+.cover .rule{ height:6px; width:74mm; background:var(--cyan); margin-bottom:12mm; }
+.cover .k{ color:var(--cyan); font-size:12pt; font-weight:700; letter-spacing:.14em; }
+.cover h1{ font-size:32pt; line-height:1.2; margin:7mm 0; }
+.cover h1 .o{ color:var(--orange); }
+.cover .sub{ color:var(--lblue); font-size:12pt; max-width:135mm; margin-bottom:10mm; }
+.cover .rulebox{ background:#fff3de; color:#142233; border-left:6px solid var(--orange);
+                 border-radius:6px; padding:5mm 6mm; font-weight:800; font-size:12pt; max-width:150mm; }
+.cover .use{ color:#9db4c4; font-size:10.5pt; margin-top:14mm; max-width:150mm; }
+.cover .foot{ color:var(--cyan); font-weight:700; font-size:10.5pt; margin-top:6mm; }
+
+.sec-head{ display:flex; align-items:baseline; gap:10px; border-bottom:2px solid var(--blue);
+           padding-bottom:5px; margin:0 0 5mm; }
+.sec-head .n{ font-size:19pt; font-weight:800; color:var(--cyan); }
+.sec-head h2{ font-size:16pt; }
+.lead{ color:var(--slate); margin:0 0 4mm; }
+
+table{ border-collapse:collapse; width:100%; margin:3mm 0; font-size:9.8pt; }
+th{ background:var(--blue); color:#fff; text-align:left; padding:2.6mm 3mm; font-size:9.3pt; }
+td{ border:1px solid #ccd9e3; padding:2.6mm 3mm; vertical-align:top; }
+.kv td:first-child{ background:var(--lblue); font-weight:700; width:32mm; }
+.mapt td:first-child{ font-weight:700; width:30mm; }
+
+/* map */
+.map .b0 td:first-child{ background:#fff3de; }
+.map .b1 td:first-child{ background:var(--lblue); }
+.map .b2 td:first-child{ background:#d9e9f5; }
+.map .b3 td:first-child{ background:#ddeaf3; }
+
+.rulebox{ background:var(--orange); color:var(--ink); border-radius:8px; padding:4mm 5mm;
+          text-align:center; font-weight:800; font-size:11.5pt; margin:4mm 0; }
+.note{ background:var(--lblue); border-left:6px solid var(--blue); border-radius:6px;
+       padding:4mm 5mm; font-weight:700; color:var(--blue); font-size:11pt; margin:4mm 0; }
+
+/* session */
+.session{ page-break-inside:avoid; margin-bottom:6mm; }
+.s-head{ background:var(--blue); color:#fff; border-radius:7px 7px 0 0; padding:3.5mm 5mm; }
+.s-head.o{ background:var(--orange); color:#142233; }
+.s-head.d{ background:#142233; }
+.s-head .sn{ font-size:9pt; font-weight:800; letter-spacing:.12em; opacity:.9; }
+.s-head h3{ font-size:14pt; margin-top:1mm; }
+.s-body{ border:1px solid #dde8f0; border-top:none; border-radius:0 0 7px 7px; padding:5mm; }
+.block-h{ font-size:11pt; font-weight:700; color:var(--blue); margin:4mm 0 2mm; }
+.block-h.first{ margin-top:0; }
+ul.hands{ margin:0 0 2mm; padding-left:5mm; } ul.hands li{ margin:1.5mm 0; }
+.ptitle{ font-weight:700; font-size:10pt; margin:3mm 0 1mm; }
+pre.prompt{ background:var(--paper); border-left:5px solid var(--cyan);
+            border:1px solid #dde8f0; border-left:5px solid var(--cyan); border-radius:4px;
+            padding:3mm 4mm; font-family:"SF Mono","Menlo","Courier New",monospace;
+            font-size:8.8pt; line-height:1.45; white-space:pre-wrap; color:#142233; margin:1mm 0 3mm; }
+.conv{ border-radius:5px; padding:2.6mm 3.6mm; margin:0 0 2mm; font-size:9.6pt; line-height:1.42; }
+.conv.c{ background:var(--lblue); border-left:4px solid var(--blue); }
+.conv.y{ background:var(--paper); border-left:4px solid var(--cyan); }
+.conv.f{ background:#fff8ec; border-left:4px solid var(--orange); color:#6a5427; }
+.conv b{ color:var(--ink); }
+.deliver{ background:var(--blue); color:#fff; border-radius:6px; padding:3mm 5mm;
+          font-weight:700; font-size:11pt; margin:4mm 0 2mm; }
+.deliver.o{ background:var(--orange); color:#142233; }
+.deliver.d{ background:#142233; }
+.fill-h{ font-size:10pt; font-weight:700; color:var(--slate); margin:4mm 0 2mm; }
+.fill-line{ font-size:9.5pt; color:var(--slate); }
+.fill-line .lb{ font-weight:700; }
+.fill-line .ln{ display:inline-block; border-bottom:1px solid #ccd9e3; min-width:110mm; height:5mm; vertical-align:bottom; }
+.take{ font-size:11.5pt; margin:2.5mm 0; }
+.take b{ color:var(--blue); }
+.cta{ background:#142233; color:#fff; border-radius:10px; padding:8mm; margin-top:5mm; }
+.cta h2{ color:#fff; font-size:18pt; } .cta .o{ color:var(--orange); font-weight:700; }
+.foot-note{ color:var(--slate); font-size:8.6pt; margin-top:6mm; text-align:center; }
+/* downloads */
+.dlbox{ background:#142233; color:#fff; border-radius:10px; padding:6mm 7mm; margin:4mm 0; }
+.dlbox .big{ font-size:13pt; font-weight:800; }
+.dlbox .url{ font-family:"SF Mono","Menlo","Courier New",monospace; color:#28c2e7; font-size:11pt; word-break:break-all; }
+.dlbox .hint{ color:#9db4c4; font-size:9.5pt; margin-top:2mm; }
+a.dl{ color:var(--blue); text-decoration:none; font-weight:600; }
+table.dl td{ font-size:9.6pt; }
+table.dl td:first-child{ width:14mm; text-align:center; font-weight:700; color:var(--cyan); background:var(--paper); }
+table.dl .desc{ color:var(--slate); }
+
+h1.mdh, h2.mdh, h3.mdh { margin:0; }
+h1.mdh { font-size:16pt; font-weight:800; color:var(--blue); border-bottom:2px solid var(--blue);
+         padding-bottom:4px; margin:8mm 0 4mm; page-break-after:avoid; }
+h2.mdh { font-size:13pt; font-weight:800; color:var(--ink); margin:6mm 0 2.5mm;
+         border-left:5px solid var(--cyan); padding-left:3mm; page-break-after:avoid; }
+h3.mdh { font-size:11.5pt; font-weight:800; color:var(--blue); margin:4.5mm 0 2mm; page-break-after:avoid; }
+.md p { margin:2mm 0; }
+.md ul, .md ol { margin:2mm 0 2mm 6mm; padding:0; }
+.md li { margin:1.2mm 0; }
+.md strong { color:var(--blue); }
+.md code { background:var(--lblue); border-radius:4px; padding:.3mm 1.2mm;
+           font-family:ui-monospace,Menlo,monospace; font-size:9pt; color:#0b4a72; }
+.md pre { background:var(--ink); color:#eaf3fb; border-radius:7px; padding:3mm 4mm;
+          font-size:8.4pt; line-height:1.45; margin:2.5mm 0; page-break-inside:avoid; overflow:hidden; }
+.md pre code { background:none; color:#eaf3fb; padding:0; }
+.md blockquote { border-left:5px solid var(--cyan); background:var(--lblue);
+                 border-radius:0 7px 7px 0; padding:3mm 4mm; margin:3mm 0; page-break-inside:avoid; }
+.md blockquote p { margin:.8mm 0; }
+.md hr { border:none; border-top:1px solid #ccd9e3; margin:5mm 0; }
+.md a { color:var(--blue); }
+.slice { background:var(--lblue); border-left:6px solid var(--orange); border-radius:6px;
+         padding:4mm 5mm; margin:4mm 0; font-size:10pt; line-height:1.55; }
+.slice b { color:var(--blue); }
+</style><div class="cover">
+  <div class="rule"></div>
+  <div class="k">7 大 AI 启动包 · 第 03 个 · 教学版（Ver A）</div>
+  <h1><span style="font-size:34pt">🎬</span><br>《AI口播短视频》启动包</h1>
+  <div class="sub">8 分镜短视频 · B-roll · ChatCut 后期</div>
+  <div class="rulebox">铁律：一次一步 · 先跑通 1 条再放量（One before many）</div>
+  <div class="use">这一份是<b>完整版课程手册的其中一段</b>——同一套系统、同一套排版，只是把这个启动包单独抽出来给你。
+  想看全程（Session 0 → 10 怎么串成一条流水线），看 <b>08-终极版 · 全部步骤</b>。</div>
+  <div class="foot">SUMA College 特别课程【AI内容营销系统 + 线下实操课】· 《AI口播短视频》启动包</div>
+</div><div class="pb"><div class="sec-head"><span class="n">🎬</span><h2>这一包在系统的哪一步</h2></div><div class="slice">下面这一段，和 <b>08-终极版 · 全部步骤</b> 里的是<b>同一段</b>——不是另一套教法。你在课上跟着终极版走到这一步时，翻的就是这几页。</div><div class="session"><div class="s-head"><div class="sn">SESSION 6</div><h3>AI 影片</h3></div><div class="s-body"><table class="kv"><tr><td>🎯 目标</td><td>做出一支完整的口播短视频 —— 生成 + 后期剪辑。</td></tr><tr><td>📦 学 skill</td><td>Higgsfield（Seedance）生成 · ChatCut 剪辑</td></tr><tr><td>📖 读 md</td><td>tools/06-ai-video</td></tr></table><div class="block-h">🛠️ 当场动手</div><ul class="hands"><li>看 Claude 写的 8 分镜脚本</li><li>🔴 没真人？九宫格挑一个号码 → 定妆照锁脸</li><li>看它先跑的 1 镜验证</li><li>OK → 跑完 + 拼接</li><li>🔴 进 ChatCut 后期：字幕 / 花字 / 音效 / BGM</li></ul><div class="block-h">💬 这一步对话会怎么走（你只答题 / 挑刺，不用打 prompt）</div><div class="conv c"><b>🗣️ Claude 会问 / 做：</b>会写 8 分镜脚本（进 Notion 表）→ 没真人先九宫格选人（挑号码→定妆照锁脸）→ 锁人物 → 先跑 1 镜（480p）验证给你看。</div><div class="conv y"><b>🙋 你答（SUMA 例子）：</b> 受众：美妆美容院老板娘，MoFu 行业揭秘；人物用学姐陈晓晴；　台词别用「咯/啦」、从第一帧讲话、禁字幕（后期加）、要 B-roll 别一直人头。</div><div class="conv c"><b>🗣️ Claude 会问 / 做：</b>1 镜 OK 后，跑完其余分镜并拼接成素材。</div><div class="conv y"><b>🙋 你答（SUMA 例子）：</b> 跑完 Shot 2–8，拼成完整版素材。</div><div class="conv c"><b>🗣️ Claude 会问 / 做：</b>🔴 生成 ≠ 成品。拼完只是素材，后期那一层才是「广告片」和「AI 生成视频」的分界线。Claude 会用 ChatCut 帮你上字幕 / 花字 / 音效 / BGM——但它会先问你 5 题定参数。</div><div class="conv y"><b>🙋 你答（SUMA 例子）：</b> 把拼好的素材进 ChatCut 做后期。先问我 5 题（卖给谁 / 三个色 / 字体 / 品牌人格 / 重点字），　再开始剪，每改一步渲一帧给我看。</div><div class="deliver">🎁 走出教室的交付物：1 支可以直接发的成品（约 90 秒）</div><div class="fill-h">✍️ 我的记录（现场填）</div><div class="fill-line"><span class="lb">视频主题：</span> <span class="ln"></span></div><div class="fill-line"><span class="lb">8 镜里最难的一镜：</span> <span class="ln"></span></div><div class="fill-line"><span class="lb">我的三个色（中性/品牌/强调）：</span> <span class="ln"></span></div><div class="fill-line"><span class="lb">我的品牌人格一句话：</span> <span class="ln"></span></div></div></div><div class="session"><div class="s-head"><div class="sn">SESSION 9</div><h3>视频生产线</h3></div><div class="s-body"><table class="kv"><tr><td>🎯 目标</td><td>把 脚本→锁人物→逐镜→音乐→拼接 串成一条线。</td></tr><tr><td>📦 学 skill</td><td>（组合已学技能）</td></tr><tr><td>📖 读 md</td><td>tools/03 / 05 / 06 + SKILL.md</td></tr></table><div class="block-h">🛠️ 当场动手</div><ul class="hands"><li>看 Claude 跑通 1 支完整视频</li><li>让它复制到其他内容批量出片</li></ul><div class="block-h">💬 这一步对话会怎么走（你只答题 / 挑刺，不用打 prompt）</div><div class="conv c"><b>🗣️ Claude 会问 / 做：</b>会把 脚本→锁人物→逐镜→配乐→拼接 跑通 1 支给你看。</div><div class="conv y"><b>🙋 你答（SUMA 例子）：</b> 跑通后复制到其他受众批量出片，放 Need Review 等我审。</div><div class="deliver">🎁 走出教室的交付物：一批视频 + 一条能重复的视频线</div><div class="fill-h">✍️ 我的记录（现场填）</div><div class="fill-line"><span class="lb">跑通的第一支：</span> <span class="ln"></span></div><div class="fill-line"><span class="lb">批量做了 ___ 支</span> <span class="ln"></span></div></div></div></div><div class="pb md"><h1 class="mdh">Skill · AI 影片（工具：Higgsfield / Seedance）</h1>
+<p><strong>在系统里的工位：</strong> 把脚本变成完整口播短视频 —— 视频生产线的核心（数字人见 <code>7大AI启动包/05-《AI数字分身》启动包</code>，音乐见 <code>7大AI启动包/07-《AI品牌配乐》启动包</code>）。</p>
+<blockquote><p>🔴 <strong>先分两条路线</strong>（跟院长 slide 一致，脚本角度完全不同）：<br>- <strong>个人 IP / AI 数字人口播</strong>：你（或数字分身）出镜讲观点/方法，建立个人影响力——台词是「你的主张」，靠持续 + 独特观点。<br>- <strong>卖产品 / 服务影片广告</strong>：推货/服务成交——台词是「痛点→产品价值→证据→CTA」，B-roll show 产品/成品/使用场景。</p></blockquote>
+<h2 class="mdh">流水线</h2>
+<pre><code>分镜脚本(进表) → 【没真人？先选人】→ 锁人物(脸参考) → seedance 逐镜生成
+              → 抽帧验证 → 拼接完整版 → 后期剪辑(字幕/音效/BGM)</code></pre>
+<ol><li><strong>分镜脚本进表格</strong>（一 shot 一 row）：镜号/类型 · Prompt · 台词 · 平台。整支约 60–100s。列宽示例 199 / 562 / 290 / 120（Prompt 列最宽）。</li><li><strong>选人</strong>——<strong>只在没有真人出镜时做</strong>。见下面 §0。有真人（老板/讲师本尊）直接跳到第 3 步。</li><li><strong>锁人物（口播镜）</strong>：用 <strong>3 张脸参考图</strong>（正脸+不同角度更稳）当 <code>image_references</code>，每个真人镜 prompt <strong>重复完整 persona 描述</strong> → 全片同一个人。</li><li><strong>逐镜生成</strong>：<code>seedance_2_0</code> · <code>9:16</code> · 每镜 4–15s。</li><li><strong>验证 + 拼接</strong>：抽帧检查（无 ffmpeg 用 <code>imageio_ffmpeg</code>）→ 统一参数 → concat 完整版。</li><li><strong>后期剪辑</strong>：字幕 / 花字 / 音效 / BGM → 见「AI 剪片」段 + 本包两份配套文档。</li></ol>
+<hr>
+<h2 class="mdh">§0. 人物从哪来（没有真人的时候）</h2>
+<p>第 3 步要「3 张脸参考图」——<strong>但如果你没有真人可拍，那张脸从哪来？</strong> 这一节答的就是这个。</p>
+<blockquote><p>🔴 <strong>两步，中间必须停下来等你选。</strong> 别让 AI 一口气跑完——脸没锁死，后面每一镜都会跑样，整支重做。</p></blockquote>
+<h3 class="mdh">0a. 九宫格选人（一张图，9 个不同的人）</h3>
+<p>让 Claude 直接生成（<code>generate_image</code>，1:1 正方）：</p>
+<pre><code>A single square 1:1 casting board arranged as a clean 3x3 grid of 9 passport-style
+headshots of 9 DIFFERENT [目标市场] [men/women], all [age range] with a [vibe] look.
+IMPORTANT: each of the 9 is a DIFFERENT individual with a DIFFERENT face — different
+face shape, eyes, nose, eyebrows, lips, jawline, skin tone and hairstyle. They must
+NOT look like the same person; do not reuse one face with different hair. Every cell:
+head-and-shoulders, front-facing, neutral friendly expression, pure white background,
+even soft lighting, consistent framing. Place a small clean number (1 to 9) in the
+TOP-LEFT corner of each cell.
+&lt;真实感条款&gt;
+The 9 people:
+1 — [脸1：脸型/眼/鼻/眉/唇/肤色/发型]
+2 — [脸2：…]   3 — […]   4 — […]   5 — […]   6 — […]   7 — […]   8 — […]   9 — […]</code></pre>
+<ul><li>🔴 <strong>9 个不同的人，不是同一张脸换 9 个发型</strong>——这是最容易出错的一条。<strong>先把五官写死再写头发</strong>，模型才不会偷懒。</li><li>🔴 <strong>9 张脸的清单要写出来给你看</strong>，你才知道几号是谁。</li><li>⏸️ <strong>停。等你回一个号码（1–9）。</strong> 只能选 1 个。</li></ul>
+<h3 class="mdh">0b. 定妆照锁脸（把那张脸钉死）</h3>
+<p>拿到号码后，<strong>把九宫格原图当参考图一起送回去</strong>，prompt 里<strong>点名号码</strong>——这才是锁脸的关键：</p>
+<pre><code>Using the attached 3x3 casting grid image as reference, recreate the EXACT same person
+shown in CELL NUMBER [N] (the headshot labelled &quot;[N]&quot; in its top-left corner). Keep that
+person&#x27;s identity unchanged — same face shape, eyes, nose, eyebrows, lips, jawline, skin
+tone and hairstyle as cell [N]; do not blend with the other faces.
+[把 [N] 号那张脸的五官原样重述一遍] [气质] [服装]. Pure white background, front-facing,
+neutral friendly expression, head-and-shoulders framing.
+&lt;真实感条款&gt;</code></pre>
+<ul><li>🔴 <strong>不点名号码 = 模型会把 9 张脸糊在一起</strong>，出来是个「平均脸」，跟你选的那个不是同一个人。</li><li>建议再出<strong>不同角度各一张</strong>（正脸 + 侧一点 + 微笑）→ 正好凑够第 3 步要的 <strong>3 张脸参考图</strong>。</li></ul>
+<h3 class="mdh">0c. 真实感条款（0a / 0b / 每一镜都要带）</h3>
+<pre><code>candid photo shot on a real camera (50mm, f/2.8), natural realistic skin texture with
+visible pores, fine lines and subtle imperfections, natural facial asymmetry, true-to-life
+natural lighting, slight film grain, documentary realism, looks like a real unretouched
+photo of a real person, NOT AI-generated, no CGI, no 3D render, no plastic or
+over-smoothed skin, no waxy look, no airbrushing, no over-saturation, no perfect symmetry.</code></pre>
+<p>漏了它 → 出来就是一眼假的「AI 脸」：皮肤打蜡、五官完美对称、没毛孔。<strong>这条跟 §2「照片级真人」是同一场仗的两条战线</strong>：§0 管那张<strong>脸</strong>不假，§2 管那个<strong>人</strong>会动。</p>
+<hr>
+<h2 class="mdh">🔴 硬规则（实操固化，最重要）</h2>
+<h3 class="mdh">1. 强制无字幕（最容易踩）</h3>
+<ul><li><strong>原生配音（<code>generate_audio=true</code>）默认会把台词烤成字幕</strong>，模型不会自己去掉。</li><li><strong>prompt 写死这句</strong>（漏了就有字幕，写了就干净——已验证）：</li></ul>
+<p>  &gt; <code>ABSOLUTELY NO on-screen text, NO subtitles, NO captions, NO burned-in words of ANY kind anywhere in the frame — completely clean footage, all text added later in post.</code></p>
+<ul><li>品牌名 / CTA / 字幕 <strong>全部后期（CapCut/Canva）加</strong>，AI 生成保持干净无字。</li></ul>
+<h3 class="mdh">2. 真人感：照片级真人 + 会眨眼 + 眼珠会动（否则「卡通脸 / 木偶死眼」）</h3>
+<ul><li>🔴 <strong>数字人必须「照片级真人」</strong>（不是卡通、不是 3D avatar）：prompt 写死</li></ul>
+<p>  &gt; <code>PHOTOREAL, REALISTIC HUMAN presenter talking to camera, a real-looking person, natural skin, NOT a cartoon, NOT a 3D avatar, NOT CGI.</code></p>
+<p>  漏了这条第一版就会出卡通/塑料脸（详见 <code>7大AI启动包/05-《AI数字分身》启动包</code>）。</p>
+<ul><li>prompt 再写活人细节：</li></ul>
+<p>  &gt; <code>BLINKS naturally, EYES alive with the eyeballs MOVING via subtle micro-saccades, gaze shifts naturally, small head/eyebrow micro-movements, gentle breathing — a real living human, NOT a staring mannequin with dead eyes.</code></p>
+<ul><li>静态参考图 + 没写眼动 → 模型只动嘴、眼睛发呆。</li></ul>
+<h3 class="mdh">3. 运镜 / 动作（1–3 镜点缀，避免死机位）</h3>
+<ul><li>推镜 <code>SLOW CINEMATIC CAMERA PUSH-IN</code>（hook / CTA 收尾）· 横摇 <code>CAMERA SLOWLY PANS</code>（展示一排东西）· 手持 <code>slight handheld camera movement</code>（口语段）· 动作：手势 / 前倾 / 指向。别每镜都加。</li></ul>
+<h3 class="mdh">4. B-roll = 无脸真实近景，对应台词点名的东西</h3>
+<ul><li>🔴 <strong>首选：无脸真实近景（close-up）实拍/录屏，show 那句台词点名的东西本身</strong>（工具/产品/成品/流程）。真实、贴题。</li><li>🔴 <strong>优先用你自己的真实素材</strong>：开工前把该<strong>工具/产品/成品的真实截图或短片</strong>发给 Claude → 当 <code>image_references</code> 或让它照着写 prompt，B-roll 才贴、才真、<strong>不乱造假界面</strong>。没参考时才让它按台词描述生成近景示范。</li><li>🔴 <strong>B-roll 一律不放主播、不需要口型</strong> → 生成时 <code>generate_audio=false</code> 且<strong>不给 <code>audio_references</code></strong> → 无口型问题、几乎不烤字幕。</li><li>❌ <strong>别让主播出镜做演示镜</strong>：主播一开口就要对口型，而 audio_ref 口型在演示镜上不稳、还随机烤字幕。口播归口播、演示归无脸 B-roll，分开最稳。</li><li>🔴 <strong>B-roll 必须跟那句台词内容对应</strong>（讲 A 就 show A），泛泛「人在打电脑」不算。</li><li>🔴 <strong>画面要快切</strong>：prompt 写 <code>FAST-PACED, snappy quick HARD CUTS every ~1.2–1.5s, everything moving fast, no slow lingering shots</code>。</li><li>🔴 <strong>prompt 绝不写 hex 色号 / 文字标签</strong>（会被烤成乱码文字，跟海报「别写字体规格」同一个坑）；改写方向词（如 <code>blue-and-white palette</code>）+ <strong>纯图标/纯抽象</strong>，并加死 <code>NO letters, NO numbers, NO words, NO labels of ANY kind</code>。</li><li>屏幕内容一律 <strong>soft/out of focus，无可读文字</strong>。</li></ul>
+<h3 class="mdh">4.5 口型对齐 + 声音一致（真人口播镜正解）</h3>
+<p>要「同一把声音 + 无字幕 + 口型准」三者都满足 → 走「静音生成 + 合声」，别用原生：</p>
+<ol><li><strong>选声</strong>（见 §5）→ 拿到 voice_id。</li><li><strong>逐句 TTS</strong>（<code>seed_audio</code>；<code>speech_rate</code> 用整数，正=快）→ 每句 wav + 时长。</li><li><strong>静音生成视频</strong>（<code>generate_audio=false</code> + <code>audio_references=&lt;该句TTS&gt;</code> + 脸参考），<strong><code>duration = round(音频秒数)</code></strong>（🔴 <strong>别 ceil！</strong> ceil 会把嘴型摊长、越到后面越拖——实测音频 12.23s 设 13 就飘，设 12 就准）。</li><li><strong>PTS 精确合声</strong>：视频与音频差零点几秒时，mux 把视频 <code>setpts</code> 拉/缩到音频时长再贴，端到端不漂、不丢词。</li></ol>
+<p>⚠️ 原生 <code>generate_audio=true</code> 会烤字幕、且每镜声音会飘，无字幕护栏也不 100% 可靠。要口型紧可用它，但要<strong>无字幕+同声就不能用</strong> → 真人镜一律走上面的「静音+合声」。<code>voice_change</code>（换音色保时序）只在<strong>源视频已无字幕</strong>时才有用。</p>
+<h3 class="mdh">5. 选声（按数字人性别）</h3>
+<ul><li><strong>默认走 preset，按数字人性别挑</strong>：男→男声、女→女声。<code>list_voices</code> 看全部（男/女各约 20 把）+ <code>preview_url</code> 试听；用 <code>voice_type=&#x27;preset&#x27;</code> + <code>voice_id</code>。</li><li><strong>想更像某个真人本尊</strong> → 才克隆（<code>create_voice_from_confirmed_audio</code>，干净样本：安静、近麦 ~15cm、无背景乐、连续讲 ~1 分钟；样本脏 → 克隆薄+带杂音）。</li><li>⚠️ preset 偏英语训练，<strong>中文/其他语口播可能带点口音</strong>；在意腔调就试听后定，或用克隆。</li><li>B-roll 旁白用同一把声保持一致。</li></ul>
+<h3 class="mdh">6. 台词</h3>
+<ul><li><strong>用你目标市场的语言/口语</strong>、<strong>无口头禅</strong>；要多要实；从第一帧就讲、不留白；语速偏快不拖。</li></ul>
+<h3 class="mdh">7. 背景</h3>
+<ul><li>背景<strong>虚化、无可读文字</strong>（<code>background softly out of focus, NO readable text</code>）——否则参考图里的字会被带进画面。</li></ul>
+<h3 class="mdh">8. 合规红线</h3>
+<ul><li><strong>按你自己行业/品牌的合规红线走</strong>（该写什么、绝不写什么）。</li><li><strong>人物贴你的目标市场</strong>（含背景/屏幕里的人）。</li></ul>
+<hr>
+<h2 class="mdh">参数 &amp; 成本（省 credit）</h2>
+<ul><li><strong>一律 480p + <code>mode fast</code></strong>（≈15–18 credit/镜）；实测 <code>std/720p</code> 没明显差别、不值 3–4 倍。</li><li><code>count=1</code>，一镜一条。</li><li>弹 <code>preset</code> 推荐不想用 → 带 <code>declined_preset_id</code> 原样重发。</li><li><strong>先验 1 镜确认「声音+无字幕+眨眼+脸」→ OK 再批量。</strong></li></ul>
+<h2 class="mdh">AI 剪片（字幕 / 配乐 / 音效）</h2>
+<p><strong>🔴 生成 ≠ 成品。</strong> 拼接完只是<strong>素材</strong>。字幕/花字/音效/BGM 这一层，才是「广告片」和「AI 生成视频」的分界线。</p>
+<h3 class="mdh">用什么剪 —— 中文片只有一条路（2026-07 实测）</h3>
+<table><tr><th>工具</th><th>结论</th></tr><tr><td>⭐ <strong>ChatCut</strong>（MCP 连接器）</td><td>✅ <strong>唯一为 AI agent 设计、且认真做过中文的剪辑器</strong>（音效库说明都是中文写的、内置 CJK 字体后备、CJK 逐字高亮它自己默认关掉——因为它知道中文不该那样）</td></tr><tr><td><strong>ffmpeg + Claude</strong></td><td>✅ 基础够用：<code>.srt/.ass</code> 烧字幕、垫 BGM、混音效、淡入淡出/缩放</td></tr><tr><td><strong>HyperFrames</strong></td><td>⚠️ <strong>叠图层可以，中文字幕别用</strong> —— 见下</td></tr><tr><td><strong>剪映 / CapCut</strong></td><td>❌ <strong>草稿加密</strong>，AI 程序化剪不了（只能手动或 UI 自动化，慢且脆）</td></tr><tr><td><strong>Gemini Omni</strong></td><td>❌ 实测不稳，中文字幕烧不干净</td></tr></table>
+<h3 class="mdh">📄 三份配套文档（在本包同目录）</h3>
+<table><tr><th>文档</th><th>是什么</th><th>什么时候看</th></tr><tr><td><strong><code>VIDEO-PROMPT-SKILL.md</code></strong></td><td><strong>前段 skill（出片）</strong> —— 引导流程：读 script → 问方向 → 九宫格选人 → 逐镜 prompt</td><td>有 script 要开拍时。<strong>它只管流程，规则以本 README 为准</strong></td></tr><tr><td><strong><code>SOP-AI自动剪辑.md</code></strong></td><td><strong>通用方法论</strong> —— 五层模型 · 14 条规则 · <strong>教练式提问脚本</strong> · 全行业适配表</td><td><strong>剪之前先看这份</strong>。换工具、换行业都成立</td></tr><tr><td><strong><code>CHATCUT-SKILL.md</code></strong></td><td><strong>后段 skill（剪片）</strong> —— ChatCut 说明书：全库存清单（音效35/转场13/特效9/推近4/MG 210）+ 14 个坑</td><td>动手剪时查</td></tr></table>
+<blockquote><p><strong>一条生产线两段：<code>VIDEO-PROMPT-SKILL</code>（出片）→ <code>CHATCUT-SKILL</code>（剪片）。</strong> 两份 skill 都只写流程，<strong>硬规则单一源头在本 README</strong> —— 改一处全对。</p></blockquote>
+<h3 class="mdh">🔴 五条最容易赔钱的（详见 SOP）</h3>
+<ol><li><strong>建项目 fps 用工具默认值（30），别用原片真实值</strong> —— 引擎硬编码 30fps；实测填 24 → <strong>片尾 17 秒字幕永远不出现</strong></li><li><strong>转录是可以改的源数据</strong> —— 没标点先补标点。补完转录引擎自己重新分段（2 大坨 → 26 句），分页自动就对；不补就得手工打 20+ 个断点救症状</li><li><strong>中文逐字高亮是废的</strong> —— 中文 ASR 的「word」= 单个字，高亮会跟着废字乱跑。<strong>花字只能用动态图形层做</strong></li><li><strong>描边是宋体的天敌</strong> —— &gt;5px 会把细笔画吃光，宋体变黑体。<strong>衬线体用阴影</strong></li><li><strong>声音出问题先查开关</strong> —— 静音的轨道和音量不足，症状一模一样（实测：BGM 调了三轮音量，那条轨是 muted）</li></ol>
+<h3 class="mdh">🔴 选音效/转场：三问，不是查表</h3>
+<blockquote><p>① <strong>形状对不对？</strong>（砸/飞/卡进位/累积 —— 跟动画匹配吗）<br>② <strong>这个声音属于哪个文化圈？</strong>（我在哪听过它）<br>③ 那个圈，<strong>跟这个品牌是同一群人吗？</strong></p></blockquote>
+<p>说明书只写「它做什么」，不写「它听起来像什么文化」。某个音效说明写着「适合重点字幕」——功能全对，<strong>但它是网络迷因音</strong>，打在专业品牌上是灾难。</p>
+<p><strong>没有绝对的禁忌音</strong>（唱片刮擦在潮牌片里是神来之笔），<strong>只有对不对得上</strong>。别背黑名单——<strong>拿到品牌人格，对整个库跑一遍三问</strong>。</p>
+<hr>
+<h2 class="mdh">HyperFrames（叠图层可以，中文字幕别用）</h2>
+<p>HeyGen 开源（Apache-2.0 免费商用），HTML/CSS → 确定性 MP4。<strong>做透明叠加图层 / logo sting 是好用的。</strong></p>
+<p><strong>但 <code>/embedded-captions</code> 是拉丁文专用</strong>（2026-07 实测）——不是配置问题，是设计假设：</p>
+<ol><li><strong>自带 6 个字体全是 latin 子集</strong>（<code>LXGWWenKaiTC-400-latin.woff2</code> 才 19KB，真中文字体 5–20MB）→ 中文全变豆腐块 □□□</li></ol>
+<p>   → 换 Noto Sans SC 能修</p>
+<ol><li><strong>Whisper 默认模型全带 <code>.en</code></strong> → 中文必须 <code>--model large-v3 --language zh</code></li></ol>
+<p>   → 能修</p>
+<ol><li><strong>中文没空格 → word 级时间码躺平</strong>（84 秒整段吐成<strong>一个</strong> word）</li></ol>
+<p>   → 用 ffmpeg 检测硬切点 + 套自己的脚本文字（比 ASR 准、零错字）：</p>
+<p>   ```bash</p>
+<p>   ffmpeg -i in.mp4 -filter:v &quot;select=&#x27;gt(scene,0.3)&#x27;,showinfo&quot; -f null - 2&gt;&amp;1 | grep -oE &quot;pts_time:[0-9.]+&quot;</p>
+<p>   ```</p>
+<p>   ✅ 校验：每段「字数 ÷ 秒数」应稳定在 <strong>~6 字/秒</strong>；偏太多 = 切点抓错（B-roll 横摇会产生假切点）</p>
+<ol><li>🔴 <strong>修完前三个还是不行</strong> —— 它的匹配器是 <strong>ASCII</strong> 的、锚点是 <strong>16:9 硬编码</strong>的。<strong>中文字幕就走 ChatCut。</strong></li></ol>
+<p><strong>它不干的事</strong>：不改原片本身（重剪节奏/换背景/调色/改音频 = NLE 的活）。原片在底下完整播，它只叠图层。</p>
+<h2 class="mdh">其他两条路（实测结论，别浪费时间）</h2>
+<ul><li><strong>Remotion</strong>（React 写视频）：能力相当、中文渲染干净。⚠️ <strong>&gt;3 人的营利公司商用要买 Company License</strong>（remotion.pro）；个人/≤3人/非营利/评估期免费。</li><li><strong>Gemini Omni</strong>：能生成、也能「附参考片+原片」做风格迁移。<strong>实测效果不稳</strong>，中文字幕烧不干净。当玩具行，别当生产工具。</li></ul>
+<h2 class="mdh">🧰 工具清单（全部链接 + 实测结论）</h2>
+<blockquote><p>这一节的每个结论都是<strong>真金白银试出来的</strong>（2026-07-15 一整天）。<br>淘汰的那几个也留着 —— <strong>别重走一遍死路</strong>。</p></blockquote>
+<h3 class="mdh">✅ 生产线在用的</h3>
+<table><tr><th>工具</th><th>链接</th><th>干什么</th><th>要装吗</th></tr><tr><td>⭐ <strong>Claude</strong>（Claude Code）</td><td>&lt;https://claude.ai/code&gt;</td><td><strong>总指挥</strong> —— 下面每个 connector 都是它在调。没它一个都跑不起来</td><td>订阅</td></tr><tr><td><strong>Higgsfield</strong>（Seedance 2.0）</td><td>&lt;https://higgsfield.ai&gt;</td><td><strong>生成</strong>口播镜 + B-roll</td><td>connector · 按 credit 付费（<strong>具体看官网</strong>）</td></tr><tr><td>⭐ <strong>ChatCut</strong></td><td>&lt;https://www.chatcut.io&gt; · 编辑器 &lt;https://app.chatcut.io&gt;</td><td><strong>剪辑</strong> —— 字幕/花字/音效/BGM/转场。<strong>中文片唯一可行的 AI 剪辑路</strong></td><td>connector · <strong>具体看官网</strong></td></tr><tr><td><strong>Suno</strong></td><td>&lt;https://suno.com&gt;</td><td>背景乐（ChatCut 内也能直接生成）</td><td>connector · <strong>具体看官网</strong></td></tr><tr><td><strong>Notion</strong></td><td>&lt;https://notion.so&gt;</td><td>内容矩阵（分镜表 / 排期）</td><td>connector · <strong>具体看官网</strong></td></tr><tr><td><strong>Google Drive</strong></td><td>—</td><td>存原片</td><td>connector</td></tr><tr><td><strong>ffmpeg</strong></td><td><code>brew install ffmpeg</code></td><td><strong>拼接分镜</strong> · 探测规格</td><td>🔧 <strong>唯一要装的东西</strong>（免费开源）</td></tr><tr><td><strong>Pexels / Pixabay</strong></td><td>&lt;https://pexels.com&gt; · &lt;https://pixabay.com&gt;</td><td>免费商用素材</td><td>不用注册（ChatCut 内建 <code>search_stock_media</code> 直接搜）</td></tr></table>
+<blockquote><p>💰 <strong>价格一律「具体看官网」</strong> —— 各家套餐一直在变，写死了教材立刻过时。<br>🔧 <strong>学员唯一要装的是 ffmpeg</strong>，其余全是 connector（Claude 直接调，零安装）。<br>🐍 <strong>不用 Python / node</strong> —— 那些是我们出教材才用的。</p></blockquote>
+<h3 class="mdh">⚠️ 素材的两个坑（实测）</h3>
+<ol><li><strong>一定要传原片，不是 <code>_web</code> 压缩档</strong> —— 实测：4.6MB 的 480p 剪出来<strong>整支糊</strong>，原片 100MB。「打点做得再精致，垫在 480p 底下也白搭」</li><li><strong>有分镜文件就不用侦测切点</strong> —— 分镜的<strong>时长本身就是切点表</strong>，精确、免费、零误差。</li></ol>
+<p>   实测：8 段累计 <code>9.93/23.93/33.15/42.99/57.46/65.33/77.56</code> = ffmpeg 侦测出来的 <code>9.92/23.92/33.17/43.00/57.46/65.33/77.58</code>，<strong>分毫不差</strong>。</p>
+<p>   → <strong>侦测只对「拿到一支拼好的片、不知道切点」才有用</strong>（而且 B-roll 横摇会骗出假切点）</p>
+<h3 class="mdh">🔤 字体（授权红线）</h3>
+<table><tr><th>字体</th><th>链接</th><th>授权</th></tr><tr><td><strong>思源宋体</strong> <code>Noto Serif SC</code></td><td>&lt;https://fonts.google.com/noto/specimen/Noto+Serif+SC&gt;</td><td>✅ <strong>开源，免费商用</strong>。宋体系正解</td></tr><tr><td><strong>思源黑体</strong> <code>Noto Sans SC</code></td><td>&lt;https://fonts.google.com/noto/specimen/Noto+Sans+SC&gt;</td><td>✅ 同上</td></tr><tr><td>❌ 极宋 / 研宋 / 方正 / 汉仪</td><td>—</td><td>🔴 <strong>付费商用字库</strong>。方正/汉仪维权是出了名的，<strong>商用别碰</strong></td></tr></table>
+<h3 class="mdh">❌ 试过、淘汰的（别浪费时间）</h3>
+<table><tr><th>工具</th><th>链接</th><th>为什么不行</th></tr><tr><td><strong>HyperFrames</strong></td><td>&lt;https://github.com/heygen-com/hyperframes&gt;</td><td><strong>叠图层可以，中文字幕不行</strong>。字体是 latin 子集、匹配器是 ASCII、锚点 16:9 硬编码 —— <strong>是设计假设，不是配置问题</strong></td></tr><tr><td><strong>Remotion</strong></td><td>&lt;https://www.remotion.dev&gt; · &lt;https://github.com/remotion-dev/remotion&gt;</td><td>能力相当、中文渲染干净。⚠️ <strong>&gt;3 人的营利公司要买 Company License</strong>（&lt;https://remotion.pro&gt;）；个人/≤3人/非营利免费</td></tr><tr><td><strong>Gemini Omni</strong></td><td>&lt;https://gemini.google.com/app&gt;</td><td>能生成、能风格迁移。<strong>实测不稳</strong>，中文字幕烧不干净。当玩具行</td></tr><tr><td><strong>剪映专业版 / CapCut</strong></td><td>&lt;https://www.capcut.cn&gt;</td><td><strong>草稿加密</strong> → AI 读不了、写不了，<strong>程序化剪辑走不通</strong>（只能手动或 UI 自动化，慢且脆）。&lt;br&gt;⚠️ 注：我们<strong>没实测过用它手剪整支</strong> —— 只验证了「AI 接不进去」。你自己手剪它当然能用，只是 AI 帮不了你</td></tr></table>
+<h3 class="mdh">📖 参考读物（看结论就好，别照抄）</h3>
+<table><tr><th></th><th>链接</th><th>怎么看</th></tr><tr><td>Clipchamp「20 种转场」</td><td>&lt;https://clipchamp.com/zh-hans/blog/video-transitions/&gt;</td><td>⚠️ <strong>是微软 Clipchamp 的产品软文</strong>，20 个转场是它自己的素材库目录，不是行业标准。<strong>但里面两条是真的</strong>：①「交换切换」= Before/After 卡片对比 ②「确保足够的时间和空间，不会因为剪辑而分散注意力」</td></tr></table>
+<h3 class="mdh">💡 找风格参考的正确姿势</h3>
+<p><strong>别用文字描述风格 —— 直接甩片子。</strong></p>
+<p>今天最有效的一步：直接发 2 支 Instagram reel 说「要这种感觉」，比写 500 字的 prompt 精准得多。</p>
+<pre><code>「参考这两支的节奏和花字：[链接1] [链接2]
+ 我的素材是 [链接]，帮我拆解它们的做法，套到我的片上」</code></pre>
+<p><strong>⚠️ 但要分清楚</strong>：参考片是<strong>别人的口播节奏</strong>。</p>
+<p>如果参考片的人在「爆句」（2-5 字一停），而你的主播是流畅连贯讲的，</p>
+<p><strong>那个 2-5 字字幕的风格你学不来</strong> —— 那是拍摄时的表演方式，不是剪辑技巧。</p>
+<p><strong>这个门槛在摄影棚，不在剪辑台。</strong></p>
+<hr>
+<h2 class="mdh">接进系统</h2>
+<ul><li>成品贴回你的内容表 + 归档：<code>[Stage]/[受众]/Video 素材/[命名]/[分镜 + 完整版]</code>。</li><li>拼接：<code>imageio_ffmpeg</code> concat → <strong>再进 ChatCut 做后期</strong>（字幕/花字/音效/BGM，见上）。</li></ul>
+<hr>
+<blockquote><p>📎 <strong>SUMA 内部示例</strong>（仅供参考，不是通用规则）：主播 Jared + 极致鸭嗓克隆声；B-roll = 6 个 AI 工具逐个近景示范（写文案屏/出图/数字人/PPT/波形/剪辑）；合规红线 = 不写价格/免费/具体名额数字（用「名额有限」）、完整品牌名、人物一律马来西亚本地人。换成你自己行业的即可。</p></blockquote></div><div class="pb md"><hr>
+<p>name: chatcut-editing</p>
+<p>description: &gt;-</p>
+<p>  用 ChatCut MCP 剪中文竖屏广告片（口播 + B-roll + 字幕 + 重点字 + 音效 + BGM）的完整作战手册。</p>
+<p>  含全部库存清单（音效35 / 转场13 / 特效9 / 推近4 / MG 210 / LUT 2）、每个 ID 的中文说明、</p>
+<p>  以及 2026-07-15 实战踩出来的 12 个坑（fps、字幕、中文、音频、素材）。</p>
+<p>  When to use: 要用 ChatCut 剪任何中文影片；或者别的 AI 剪辑工具做不到中文字幕/花字时。</p>
+<p>  ⭐ 动手前先读「12 个坑」——每一条都是真金白银试出来的，不读会重蹈覆辙。</p>
+<p>  ⭐⭐ 最贵的一条：<strong>转录是可以改的源数据，不是只读事实</strong>。标点写回转录 = 一切分页问题的根治。</p>
+<hr>
+<h1 class="mdh">ChatCut 剪辑作战手册</h1>
+<blockquote><p>实战基准：SUMA「AI 内容课」Jared LP 广告片，84 秒竖屏，2026-07-15<br>Project: <code>007d3e90-42f3-4e24-bbbe-f5b00c66c327</code></p></blockquote>
+<hr>
+<h2 class="mdh">为什么是 ChatCut</h2>
+<p>同一天试过、全部撞死的路：</p>
+<table><tr><th>工具</th><th>死因</th></tr><tr><td>Gemini Omni</td><td>生成不可控</td></tr><tr><td>HyperFrames</td><td><strong>拉丁文专用</strong> —— 字体、ASCII 匹配器、16:9 锚点全是为英文写的</td></tr><tr><td>剪映</td><td><strong>草稿加密</strong>，程序化剪辑走不通（UI 自动化慢且脆）</td></tr><tr><td>Seedance 生 B 机</td><td>会重造人脸</td></tr></table>
+<p><strong>ChatCut 是唯一为 agent 设计、且认真做过中文的剪辑器</strong>（音效库说明都是中文写的）。</p>
+<hr>
+<h1 class="mdh">🔴 14 个坑（动手前必读）</h1>
+<h2 class="mdh">0. 说明写的是「功能」，不是「文化」 ⚠️ 最根本的一条</h2>
+<p><code>vine-boom-impact</code> 的说明写着「适合…<strong>重点字幕</strong>」—— 功能上完全正确。</p>
+<p><strong>但 Vine Boom 是网络迷因音效</strong>，带强烈的戏谑/反讽语气。打在学院的专业课程广告上 = <strong>调性灾难</strong>。</p>
+<p><strong>库里的说明只告诉你它「做什么」，不告诉你它「听起来像什么文化」。</strong></p>
+<h3 class="mdh">三问判断法（每个候选都要过）</h3>
+<blockquote><p><strong>① 形状对不对？</strong> 砸 / 飞 / 卡进位 / 累积 —— 跟动画匹配吗？<br><strong>② 这个声音属于哪个文化圈？</strong> 我在哪听过它？谁在用它？<br><strong>③ 那个文化圈，跟这个品牌是同一群人吗？</strong></p></blockquote>
+<p><strong>第 ② 问是关键。</strong> 说明书永远不会写「这是 Z 世代玩梗音」—— 你得自己问「我在哪听过」。</p>
+<h3 class="mdh">⚠️ 没有绝对的禁忌音 —— 别背黑名单</h3>
+<p>唱片刮擦在潮牌片里是神来之笔，罐头笑声在综艺里是刚需。</p>
+<p><strong>只有「这个声音的文化圈」和「这个品牌的人群」对不对得上。</strong></p>
+<p><strong>黑名单会过时</strong>（库一更新就废），<strong>而且把「判断」降级成「查表」</strong>。</p>
+<p><strong>AI 的活是拿到品牌人格后，对整个库跑一遍三问，列出候选 + 每个的理由。</strong></p>
+<h3 class="mdh">本片（学院品牌，「沉稳/有底气/不玩梗」）跑完三问的结论</h3>
+<table><tr><th>✅ 过了</th><th>理由</th></tr><tr><td><code>deep-short-whoosh</code></td><td>砸 · 电影预告感 · 有重量不搞笑</td></tr><tr><td><code>sharp-bass-riser</code></td><td>低频冲击 · 商业片</td></tr><tr><td><code>short-drum-roll-sting</code></td><td>揭晓 · 颁奖/公布 · 庄重</td></tr><tr><td><code>gear-turn-click</code></td><td>卡进位 · 精密机械 · <strong>而且本片论点就是「串成一台机器」——声音在演绎主题</strong></td></tr><tr><td><code>short-shutter-click</code></td><td>干净定格</td></tr><tr><td><code>clean-ding</code> / <code>light-clock-tick</code></td><td>完成 / 倒计时</td></tr><tr><td><code>tr-rack-focus</code> <code>tr-clean-line-wipe</code> <code>tr-anticipation-zoom</code> <code>tr-flash</code> <code>tr-luma-blend</code></td><td>电影语言</td></tr></table>
+<table><tr><th>❌ 形状对但文化圈不对</th><th>属于哪个圈</th></tr><tr><td><code>vine-boom-impact</code></td><td>Z 世代玩梗</td></tr><tr><td><code>anime-wow-reaction</code></td><td>动漫/综艺</td></tr><tr><td><code>sitcom-laugh-track</code></td><td>情景喜剧</td></tr><tr><td><code>awkward-crow-flyby</code></td><td>冷场梗</td></tr><tr><td><code>record-scratch-stop</code> / <code>-rewind</code></td><td>DJ / 喜剧打断</td></tr><tr><td><code>dramatic-thunder-roll</code></td><td>过度戏剧</td></tr><tr><td><code>tr-impact-shake</code></td><td>电竞 / 赛博（RGB 分离）</td></tr><tr><td><code>fx-crt</code> / <code>fx-ascii-rain</code></td><td>赛博 / 复古亚文化</td></tr></table>
+<p><strong>这是「本片的结论」，不是「通用规则」。换品牌重跑三问。</strong></p>
+<h2 class="mdh">1. fps 必须 30 —— 填「原片的真实 fps」会炸</h2>
+<p><code>create_project</code> 的 <code>fps</code> 默认 30。<strong>不要改。</strong></p>
+<p>原片 24fps → 我诚实地填 24 → <strong>字幕引擎硬编码 30fps</strong>，结果：</p>
+<ul><li>时间线 2017 帧 @24fps = 84 秒 ✅ 画面正常</li><li>字幕引擎认为 2017 帧 = 67 秒</li><li><strong>67 秒之后的字幕全部掉出时间线，永远不出现</strong></li><li>前面的全部漂移 1.25 倍（= 30÷24）</li></ul>
+<p><strong>判据</strong>：<code>find_transcript</code> 找不到片尾的句子 = 你中招了。</p>
+<p><strong>修法</strong>：新建 30fps 项目重铺。<code>manage_timelines</code> <strong>没有 fps 参数</strong>，改不了。</p>
+<h2 class="mdh">2. 转录是可以改的源数据 —— 这是最贵的一条</h2>
+<p><code>manage_transcript action=fix</code> 能改任何词。<strong>标点是地基，不是排版细节。</strong></p>
+<p>无标点转录 → 分页器只能按长度硬切 → 我手工打了 21 个断点去救。</p>
+<p><strong>把标点写回去</strong> → 转录引擎当场重新分段（2 大坨 → 26 个干净句子）→ 分页自己就对了。</p>
+<p>而且标点顺手修 ASR 黏词：</p>
+<pre><code>&quot;张图会&quot;    → &quot;张图，&quot; + &quot;会写句&quot;     逗号进去 + 「会」还给下一句
+&quot;作图&quot;      → &quot;做，图&quot;                错字 + 逗号 + 断句，一刀三修
+&quot;AIPPTAI&quot;   → &quot;AI PPT、&quot; + &quot;AI 音乐、&quot; 拆开合体词</code></pre>
+<p><strong>先修转录，再调分页。</strong> 反过来是在修症状。</p>
+<h2 class="mdh">3. 中文逐字高亮是废的 —— <code>highlightUnit</code> 别碰</h2>
+<p>中文 ASR 的「word」= <strong>单个字</strong>。<code>highlightUnit:&quot;word&quot;</code> = 逐字卡拉OK，高亮的是「现」「都」「套」这种废字。</p>
+<p><strong>ChatCut 默认给 CJK 关掉（<code>CJK=off</code>），它是对的。</strong> 我强行打开 = 覆盖掉它的正确判断。</p>
+<p><strong>「重点字」只能用 MG 层做。</strong> <code>display_text</code> 只能换字/隐藏/拆句，<strong>不能给单词上色或放大</strong>。</p>
+<h2 class="mdh">4. 描边是宋体的天敌（犯了两次）</h2>
+<p>宋体的辨识度全靠<strong>横细竖粗 + 三角衬脚</strong>。描边 &gt;5px 会把细横笔画整个吞掉 → 看起来就是黑体。</p>
+<p><strong>宋体用阴影，不用描边。</strong></p>
+<pre><code>{&quot;strokeWidth&quot;: 4, &quot;shadowStrength&quot;: 85}          // 字幕
+textShadow: &#x27;0 5px 0 rgba(0,0,0,.55), 0 12px 26px rgba(0,0,0,.9)&#x27;  // MG 纯色字</code></pre>
+<h2 class="mdh">5. <code>normalBackground: null</code> 静默失效</h2>
+<p>传 <code>null</code> → 不报错、不生效、不进 <code>ignoredFields</code>。<strong>最坑的那种。</strong></p>
+<p><strong>要用 <code>{&quot;backgroundOpacity&quot;: 0}</code>。</strong></p>
+<h2 class="mdh">6. 空格算字数</h2>
+<p>「6 个 AI 技能」看着 6 个字，实际占 <strong>9 格</strong>（<code>6</code>+空格+<code>个</code>+空格+<code>AI</code>+空格+<code>技能</code>）。</p>
+<p>中英混排的卡要多留 2–3 格预算。</p>
+<h2 class="mdh">7. 一卡一行，否则词组会被劈开</h2>
+<p><code>maxLines:2</code> → 换行处会切断词组（「这堂课」→「这堂 / 课」）。</p>
+<p><strong><code>maxLines:1</code> + <code>maxCharactersPerLine:9</code></strong> = 每张卡一个完整词组。</p>
+<h2 class="mdh">8. <code>split_item</code> 会孤儿化字幕覆盖</h2>
+<p>切片段 → 旧 item ID 销毁 → 所有 <code>display_text</code> 覆盖失效（<code>edited</code> 标记消失，断句全部退回）。</p>
+<p><strong>顺序：先切片段，再做断句。</strong></p>
+<p>好消息：<strong>词的 sub-ID 是稳的</strong>，只有 item 前缀变。按帧段换前缀就能批量重建：</p>
+<pre><code>旧 0ca218cf29:d14dd26559 → 新 8c0132d019:d14dd26559</code></pre>
+<h2 class="mdh">9. 声音出问题，先查开关，再查音量</h2>
+<p>BGM「太小声」调了三轮（16%→62%→85%）—— <strong>那条轨是 <code>muted: true</code></strong>。</p>
+<p>症状跟音量不足一模一样，所以会一直往音量上修。</p>
+<p><strong><code>edit_track action=list</code> 会回 <code>muted</code> 状态。先看它。</strong></p>
+<h2 class="mdh">10. 别压两层</h2>
+<p><code>role:&quot;follower&quot;</code>（自动闪避）+ 手动 <code>volume:0.16</code> = 叠加衰减，几乎无声。</p>
+<p><strong>闪避管人声下的压低，底噪就该是正常音量。</strong></p>
+<pre><code>BGM: decibelAdjustment ≈ -1.4  +  duckDepthDb: -19</code></pre>
+<h2 class="mdh">11. 音效长度差 20 倍 —— 加之前看时长</h2>
+<p><code>short-shutter-click</code> 6 帧 · <code>light-clock-tick</code> <strong>1508 帧（50 秒循环）</strong></p>
+<p>我铺了一条 50 秒的滴答声，一路响到片尾外面。</p>
+<p>**循环类音效（<code>*-loop</code>, <code>*-tick</code>）必须裁 + 淡出。**</p>
+<h2 class="mdh">12. 先看素材，再放素材</h2>
+<p><code>fx-luma-key</code> + Pixabay「gold glitter」→ 实拍是<strong>洋红色泡泡</strong>，糊了主播一脸。</p>
+<p><strong>标签会骗人。</strong> ChatCut 当时就警告过：</p>
+<blockquote><p><code>visualReviewRequired: use view_asset_frames to inspect this item&#x27;s source frame(s)</code></p></blockquote>
+<p><strong>它叫你先看，就先看。</strong></p>
+<h2 class="mdh">12.5 S3 直传的两个坑（走底层通道时）</h2>
+<p><code>import_media</code> 的正式通道被 WAF 挡（403，卡在 128KB）→ 只能走 <code>request_asset_upload_url</code> + S3 直传。</p>
+<table><tr><th>坑</th><th>现象</th><th>解法</th></tr><tr><td>🔴 <strong><code>size</code> 必须是精确字节数</strong></td><td>估一个 → <strong>403</strong>。预签名 URL <strong>签了 <code>content-length</code></strong>，差一个字节签名就废</td><td>先 <code>ls -l</code> / <code>stat</code> 量准再报</td></tr><tr><td>🟡 <strong>S3 会瞬时 503</strong></td><td>第一次 503，重试立刻 200</td><td><strong>要有重试</strong>（3 次 + 退避）</td></tr><tr><td>🔴 <strong>这条路没有标点</strong></td><td>底层通道不走正式 ingest → 转录<strong>无标点</strong></td><td>用 <code>manage_transcript fix</code> 补（见坑 #2）</td></tr></table>
+<h2 class="mdh">12.6 多分镜可以直接排，不用先拼 —— 但通常不该这么做</h2>
+<p><strong>实测</strong>：<code>edit_item</code> 的 <code>alignTo:&quot;track-end&quot;</code> <strong>自动首尾相接</strong>，连 <strong>24fps 源 → 30fps 项目</strong>都自动换算。</p>
+<pre><code>{&quot;adds&quot;:[
+  {&quot;type&quot;:&quot;video&quot;,&quot;assetId&quot;:&quot;...&quot;,&quot;trackId&quot;:&quot;...&quot;,&quot;fromFrame&quot;:0},
+  {&quot;type&quot;:&quot;video&quot;,&quot;assetId&quot;:&quot;...&quot;,&quot;trackId&quot;:&quot;...&quot;,&quot;alignTo&quot;:&quot;track-end&quot;},   // → 自动 from=298
+  {&quot;type&quot;:&quot;video&quot;,&quot;assetId&quot;:&quot;...&quot;,&quot;trackId&quot;:&quot;...&quot;,&quot;alignTo&quot;:&quot;track-end&quot;}    // → 自动 from=596
+]}</code></pre>
+<p><strong>所以理论上能省掉 ffmpeg concat。但通常不划算：</strong></p>
+<table><tr><th></th><th>8 支直传</th><th>先拼成 1 支</th></tr><tr><td>转录</td><td><strong>8 段</strong></td><td>1 段</td></tr><tr><td>补标点</td><td><strong>×8</strong>（最费工的一步）</td><td>×1</td></tr><tr><td>跨分镜的句子</td><td><strong>会被切断</strong>（一句话跨两个 shot → 字幕断开）</td><td>完整</td></tr></table>
+<p><strong>→ 先拼再传。</strong> <code>alignTo</code> 留给「本来就要分开处理每段」的场景。</p>
+<h2 class="mdh">13. 先翻库，再手写 ⚠️ 今天最贵的时间</h2>
+<p><code>browse_library category=motion-graphics</code> = <strong>210 个现成 MG</strong>，含：</p>
+<ul><li><code>text-effects</code> 8 · <code>talking-head-overlays</code> 8 · <code>title-cards</code> 26 · <code>lower-thirds</code> 10</li><li>「<strong>Talking Head Keyword Card</strong>」= 我手写的重点字卡</li><li>「<strong>Numbered Talking Head Overlay</strong>」= 我手写的六宫格</li></ul>
+<p><strong>我一个都没翻，全部从零写。</strong> 动手前先 <code>browse_library</code>。</p>
+<hr>
+<h1 class="mdh">库存清单</h1>
+<h2 class="mdh">🔊 音效 35 个（<code>browse_library category=sound-effects</code>）</h2>
+<h3 class="mdh">UI &amp; Motion Feedback（13）</h3>
+<table><tr><th>ID</th><th>说明</th></tr><tr><td><code>tiny-bubble-pop</code></td><td>极短气泡 pop，MG 卡片/贴纸/提示气泡弹出</td></tr><tr><td><code>synthetic-bubble-pop</code></td><td>有设计感的合成气泡，卡片弹出/按钮反馈</td></tr><tr><td><code>keyboard-typing-loop</code></td><td>连续键盘声，搜索/代码/表单/打字机</td></tr><tr><td><code>slow-dell-keyboard-typing</code></td><td>慢速真实键盘，办公/录屏感</td></tr><tr><td><code>mouse-click</code></td><td>清晰鼠标点击，按钮/选中/教程操作反馈</td></tr><tr><td><code>new-notification-ping</code></td><td>短促新消息提醒</td></tr><tr><td><code>ui-pop-up-alert</code></td><td>UI 弹窗/提醒</td></tr><tr><td><code>phone-notification-ping</code></td><td>手机通知</td></tr><tr><td><code>sent-message-ping</code></td><td>发送消息提示，表单提交/任务完成</td></tr><tr><td><code>video-call-ringtone</code></td><td>视频来电铃声</td></tr><tr><td><code>clean-ding</code></td><td>干净叮声，成功/完成/<strong>重点强调</strong></td></tr><tr><td><code>censor-beep</code></td><td>消音哔（脏话遮盖）</td></tr><tr><td><code>cash-register-success</code></td><td>收银机成交声，<strong>价格/金额/数字展示</strong></td></tr></table>
+<h3 class="mdh">Transition &amp; Emphasis（9）</h3>
+<table><tr><th>ID</th><th>说明</th></tr><tr><td><code>simple-whoosh</code></td><td>短促干净飞入/切换扫过</td></tr><tr><td><code>deep-short-whoosh</code></td><td>低沉干声短 whoosh，<strong>有重量感的重点信息出现</strong></td></tr><tr><td><code>airy-short-whoosh</code></td><td>轻、空气感，贴纸/字幕/UI 滑入滑出</td></tr><tr><td><code>long-suspense-riser</code></td><td>长上升铺垫，悬念/揭晓/倒计时</td></tr><tr><td><code>fast-suspense-riser</code></td><td>快速 riser，短视频制造期待接反转</td></tr><tr><td><code>sharp-bass-riser</code></td><td>很短的低频上升，冲击/标题弹出前铺垫</td></tr><tr><td><code>short-drum-roll-sting</code></td><td>短滚鼓，答案揭晓/排名公布</td></tr><tr><td><code>record-scratch-stop</code></td><td>唱片刮擦急停，突然打断/喜剧转场</td></tr><tr><td><code>record-scratch-rewind</code></td><td>更长的 scratch，倒放/回到前一刻</td></tr></table>
+<h3 class="mdh">Device &amp; Texture（8）</h3>
+<table><tr><th>ID</th><th>说明</th></tr><tr><td><code>camera-shutter</code></td><td>标准快门，拍照/截图/<strong>画面定格</strong></td></tr><tr><td><code>vintage-camera-shutter</code></td><td>复古快门，旧片感定格</td></tr><tr><td><code>short-shutter-click</code></td><td>极短快门/点击，轻量定格，<strong>也能当转场</strong></td></tr><tr><td><code>mechanical-clicking-loop</code></td><td>⚠️循环 机械运转，齿轮/设备启动</td></tr><tr><td>⭐ <code>gear-turn-click</code></td><td>短齿轮卡扣，<strong>数字滚动、同类元素切换（并列项！）</strong></td></tr><tr><td>⚠️ <code>light-clock-tick</code></td><td>⚠️<strong>循环 1508 帧</strong> 轻时钟滴答，<strong>倒计时/紧张</strong></td></tr><tr><td><code>glitchy-tv-signal</code></td><td>信号故障质感，MG motion/glitch 转场</td></tr><tr><td><code>tv-switch-off-noise</code></td><td>电视关机噪，<strong>MG 消失动画/收尾</strong></td></tr></table>
+<h3 class="mdh">Reaction &amp; Mood（5）</h3>
+<table><tr><th>ID</th><th>说明</th></tr><tr><td>⭐ <code>vine-boom-impact</code></td><td>经典低频 boom，震惊/反转/<strong>重点字幕</strong>/画面停顿</td></tr><tr><td><code>dramatic-thunder-roll</code></td><td>雷声（情绪烘托，非环境音）</td></tr><tr><td><code>anime-wow-reaction</code></td><td>动漫/综艺正向 wow，<strong>隆重登场/揭幕</strong></td></tr><tr><td><code>awkward-crow-flyby</code></td><td>乌鸦冷场，尴尬沉默</td></tr><tr><td><code>sitcom-laugh-track</code></td><td>罐头笑声</td></tr></table>
+<h2 class="mdh">🎬 转场 13 个（<code>category=transitions</code>）</h2>
+<table><tr><th>ID</th><th>说明</th><th>需要素材余量？</th></tr><tr><td><code>tr-impact-shake</code></td><td>抖动 + RGB 分离 + 闪光，<strong>在切点上打一下</strong></td><td>❌ 不需要</td></tr><tr><td><code>tr-flash</code></td><td>中点爆白 + 过曝光晕</td><td>❌</td></tr><tr><td><code>tr-anticipation-zoom</code></td><td>先回缩 → 猛推 + 方向拖影</td><td>少量</td></tr><tr><td><code>tr-rack-focus</code></td><td>失焦成散景 → 回焦 + 色差光晕</td><td>少量</td></tr><tr><td><code>tr-whip-pan</code></td><td>甩镜：A 拖出 B 甩入 + 弹性回弹</td><td>少量</td></tr><tr><td><code>tr-luma-blend</code></td><td>按亮度混合，提亮高光</td><td>是</td></tr><tr><td><code>tr-cross-dissolve</code></td><td>叠化</td><td>是</td></tr><tr><td><code>tr-dip-to-black</code></td><td>淡黑→停→淡出（<strong>吃时间</strong>）</td><td>是</td></tr><tr><td><code>tr-soft-wipe</code></td><td>羽化横向擦除 + 视差</td><td>是</td></tr><tr><td><code>tr-clean-line-wipe</code></td><td>细线扫过的方向性擦除</td><td>是</td></tr><tr><td><code>tr-organic-dissolve</code></td><td>有机噪波边缘 + 发光烧穿</td><td>是</td></tr><tr><td><code>tr-page-curl</code></td><td>翻页卷曲 + 纸张纹理</td><td>是</td></tr><tr><td><code>tr-audio-cross-fade</code></td><td>音频接缝交叉淡化</td><td>—</td></tr></table>
+<p><strong>🔑 关键认知</strong>：ChatCut 转场标记为 <code>visual XXX</code> —— <strong>它是「在接缝上盖一层视觉效果」，不是两段重叠混合</strong>。所以：</p>
+<ul><li>片段是<strong>对接</strong>的，不重叠、不重复画面、<strong>完全不碰音频</strong></li><li>在连续素材上 <code>split_item</code> 后加转场 <strong>不会</strong>产生回音或冻帧</li><li>用法：<code>{type:&quot;transition&quot;, assetId, outgoingItemId, incomingItemId, durationInFrames}</code></li><li>竖屏广告：<strong>10–14 帧（0.33–0.47 秒）</strong>，1 秒太拖</li></ul>
+<h2 class="mdh">✨ 特效 9 个（<code>category=fx</code>）</h2>
+<table><tr><th>ID</th><th>说明</th></tr><tr><td>⭐ <code>fx-shake</code></td><td>Camera Shake：fbm 噪波抖动 + 旋转 + 缩放 + 呼吸脉冲</td></tr><tr><td><code>fx-magnify</code></td><td>圆形放大镜 + 白边框（指 UI 细节）</td></tr><tr><td><code>fx-tilt-shift</code></td><td>移轴微缩 + 饱和度提升 + 暗角</td></tr><tr><td><code>fx-crt</code></td><td>CRT 复古：扫描线 + 屏幕曲率 + RGB 偏移 + 噪点</td></tr><tr><td><code>fx-ascii-rain</code></td><td>蓝色 ASCII 字符雨落在亮部</td></tr><tr><td>⭐ <code>fx-luma-key</code></td><td><strong>黑底素材叠加</strong>（火焰/烟/光效/粒子）—— 抠黑留亮</td></tr><tr><td>⭐ <code>fx-circle-mask</code></td><td>软边圆形遮罩（<strong>圆形 PIP 反应窗</strong>）</td></tr><tr><td><code>fx-rect-mask</code></td><td>圆角矩形遮罩</td></tr><tr><td><code>fx-local-mosaic</code></td><td>局部马赛克打码</td></tr></table>
+<p><strong>剪映有但 ChatCut 没有</strong>：像素化 / 百叶窗 / 拼贴 / 火焰 / 爱心 / 旋转 / 燃烧 / <strong>全部人物特效</strong>。</p>
+<p><strong>人物特效做不了的根因</strong>：缺 <strong>人物分割 AI</strong> 和 <strong>人脸追踪</strong>。所以「人物聚焦/高光时刻/大头/电光眼」不可能。</p>
+<h2 class="mdh">🔍 推近 4 个（<code>category=zoom</code>）</h2>
+<table><tr><th>ID</th><th>说明</th></tr><tr><td><code>zoom:punch</code></td><td>快速推近冲击</td></tr><tr><td><code>zoom:instant</code></td><td>瞬间放大，无动画</td></tr><tr><td><code>zoom:slow-push</code></td><td>全片渐渐放大</td></tr><tr><td><code>zoom:hold</code></td><td>推入 → 停 → 退出</td></tr></table>
+<p>用法：<code>{type:&quot;effect&quot;, assetId:&quot;library:zoom:punch&quot;, trackId, fromFrame, durationInFrames}</code></p>
+<h2 class="mdh">🎨 MG 210 个（<code>category=motion-graphics</code>）⚠️ 先翻这个</h2>
+<table><tr><th>组</th><th>数量</th></tr><tr><td>Uncategorized</td><td>102</td></tr><tr><td>Data Visualization</td><td>35</td></tr><tr><td>Title Cards</td><td>26</td></tr><tr><td>Infographics</td><td>12</td></tr><tr><td>Lower Thirds</td><td>10</td></tr><tr><td><strong>Talking Head Overlays</strong></td><td><strong>8</strong></td></tr><tr><td><strong>Text Effects</strong></td><td><strong>8</strong></td></tr><tr><td>Quote Cards</td><td>5</td></tr><tr><td>Social Media</td><td>3</td></tr></table>
+<h2 class="mdh">🎞 LUT 2 个 · Audio-FX 0 个（空）</h2>
+<hr>
+<h1 class="mdh">中文字幕配方（实战验证）</h1>
+<pre><code>// 1. enable + 套 bili 预设（原生 Noto Sans SC，唯一原生 CJK 的预设之一）
+{&quot;action&quot;:&quot;enable&quot;, &quot;preset&quot;:&quot;bili&quot;}
+
+// 2. 换宋体 + 关掉逐字高亮 + 一卡一行
+{&quot;action&quot;:&quot;style&quot;, &quot;json&quot;:{
+  &quot;fontFamily&quot;:&quot;Noto Serif SC&quot;,   // 思源宋体，开源免费商用
+  &quot;fontWeight&quot;:&quot;900&quot;,
+  &quot;sizePx&quot;:145,                    // 84秒竖屏的甜蜜点
+  &quot;color&quot;:&quot;#FFFFFF&quot;,
+  &quot;highlightUnit&quot;:&quot;off&quot;,           // 🔴 中文必须 off
+  &quot;maxLines&quot;:1,                    // 🔴 否则词组会被劈开
+  &quot;maxCharactersPerLine&quot;:9,
+  &quot;strokeWidth&quot;:4,                 // 🔴 &gt;5 会吃掉宋体的细笔画
+  &quot;shadowStrength&quot;:85,
+  &quot;backgroundOpacity&quot;:0            // 🔴 传 null 无效
+}}
+
+// 3. 只读 V1，不要读音效/BGM 轨
+{&quot;action&quot;:&quot;source_set&quot;, &quot;json&quot;:{&quot;mode&quot;:&quot;explicit&quot;,&quot;sources&quot;:[{&quot;trackId&quot;:&quot;V1&quot;}]}}</code></pre>
+<p><strong>原生 CJK 字体的预设</strong>：<code>bili</code>（Noto Sans SC）· <code>tiktok</code>（Noto Sans SC）· <code>deyi-card</code>（Smiley Sans）</p>
+<p><strong>字体授权</strong>：<code>Noto Serif SC</code> = 思源宋体，免费商用 ✅ ｜ <strong>极宋/研宋 = 造字工房/汉仪付费字库，商用有维权风险</strong> ❌</p>
+<hr>
+<h1 class="mdh">重点字（花字）配方</h1>
+<p><strong>字幕轨做不到，只能 MG。</strong> 四维同时叙事：</p>
+<table><tr><th>维度</th><th>规则</th></tr><tr><td><strong>文字</strong></td><td>挑「观众认得的那个<strong>东西</strong>」，不挑形容词。&lt;br&gt;✅ <code>AI 课</code> <code>慢慢手做</code>　❌ <code>一大堆</code> <code>一条一条</code></td></tr><tr><td><strong>长度</strong></td><td><strong>≤5 字</strong>。175px × 7 字 = 1225px &gt; 1080 画面宽，装不下</td></tr><tr><td><strong>颜色</strong></td><td>白=问题 → 品牌色=解方 → 强调色=最核心（≤3 处）。&lt;br&gt;🔴 深色品牌色（#0F75BC）打在深色底上=隐形</td></tr><tr><td><strong>形式</strong></td><td>纯色字=常规（不挡画面）· 胶囊=最狠的 5 个。<strong>光靠「有没有底」就分出主次</strong></td></tr><tr><td><strong>动画</strong></td><td>否定→stamp · 列举→slide · 揭晓→wave · 承诺→pop</td></tr><tr><td><strong>音效</strong></td><td>stamp→<code>vine-boom-impact</code> · 列举→<code>gear-turn-click</code> · pop→<code>short-shutter-click</code></td></tr></table>
+<p><strong>🔑 动画和音效的形状必须匹配</strong>：</p>
+<p>逐字弹入 15 帧 × 单发 whoosh = 声音在开头、爆点在 0.5 秒后 = <strong>「不配」</strong>。</p>
+<p><strong>把动画压进 5 帧内</strong>，声音和爆点才同步。</p>
+<p><strong>whoosh = 东西飞过去 ｜ boom = 字砸下来。</strong> 用错类别，帧位再准也不配。</p>
+<hr>
+<h1 class="mdh">工作流（正确顺序）</h1>
+<pre><code>1. create_project fps=30 (别改!) → 1080x1920
+2. 上传素材
+   ├─ import_media（正式通道，转录带标点）← 首选
+   └─ WAF 挡了(403)？→ request_asset_upload_url → S3 直传 → finalize
+      ⚠️ 代价：这条路的转录**没有标点**
+3. 转录 → manage_transcript action=fix 把标点写回去 ⭐⭐
+4. split_item 切片段（如果要转场）← 必须在断句之前
+5. enable captions + style + source_set
+6. browse_library ⭐ 先翻 210 个 MG，别急着手写
+7. 铺 MG / 转场 / fx / 音效
+8. edit_track: V1=anchor, BGM=follower + duckDepthDb
+9. edit_track action=list 查 muted ⭐
+10. view_timeline_frames 逐帧验</code></pre>
+<p><strong>每改一步都 <code>view_timeline_frames</code> 验</strong> —— 它是云渲染，不用等人看。</p>
+<p><strong><code>read_captions</code> 的 frame 是估算</strong>（工具自己说 <code>timing is render-dependent</code>），页边界以渲染为准。</p>
+<hr>
+<h1 class="mdh">已知 ChatCut 缺陷</h1>
+<table><tr><th>缺陷</th><th>影响</th></tr><tr><td>字幕/转录引擎硬编码 30fps</td><td>非 30fps 项目字幕全崩（见坑 #1）</td></tr><tr><td><code>manage_timelines</code> 文档说能改 fps，实际无此参数</td><td>建错了只能重建</td></tr><tr><td><code>normalBackground: null</code> 静默失效</td><td>用 <code>backgroundOpacity: 0</code></td></tr><tr><td>S3 直传通道的转录无标点</td><td>用 <code>manage_transcript fix</code> 补</td></tr><tr><td><code>find_transcript</code> 也按 30fps 算</td><td>非 30fps 时找不到片尾句子</td></tr><tr><td>内嵌 <code>show_preview</code> 在桌面版渲不出</td><td>直接开 editor URL</td></tr><tr><td>云渲染偶尔超时</td><td>减少 frames 数量重试</td></tr></table></div><div class="pb md"><h1 class="mdh">SOP：AI 自动剪辑 —— 通用方法论</h1>
+<blockquote><p>全行业通用。换工具、换行业、换语言都成立。<br>来源：2026-07-15 用 ChatCut 剪 SUMA「AI 内容课」LP 广告片的完整实战推导。<br>配套：<code>SKILL.md</code>（ChatCut 具体操作 + 库存清单 + 14 个坑）</p></blockquote>
+<hr>
+<h2 class="mdh">为什么需要这份 SOP</h2>
+<p><strong>AI 剪辑的瓶颈从来不是「AI 会不会剪」，是「你会不会判断」。</strong></p>
+<p>工具能在 3 秒内给你 35 个音效、13 个转场、210 个动态图形。</p>
+<p>但它不会告诉你：<strong>哪一个适合你这支片。</strong></p>
+<p>这份 SOP 就是那套判断。</p>
+<hr>
+<h1 class="mdh">第一部分：三条心法</h1>
+<h2 class="mdh">心法 1️⃣ 分层，不要分「效果」</h2>
+<p>新手想的是「加什么特效」。剪辑师想的是「<strong>这一层负责什么</strong>」。</p>
+<p>任何一支口播/带货/教学短片，都是这五层：</p>
+<table><tr><th>层</th><th>职责</th><th>观众用什么感官</th></tr><tr><td><strong>① 画面</strong></td><td>拍到的东西</td><td>看</td></tr><tr><td><strong>② 字幕</strong></td><td><strong>读</strong> —— 让人听不清也能懂</td><td>看（阅读）</td></tr><tr><td><strong>③ 重点字</strong></td><td><strong>喊</strong> —— 把一句话压成一个词砸出来</td><td>看（扫视）</td></tr><tr><td><strong>④ 声音</strong></td><td><strong>推</strong> —— 音效/BGM 制造节奏和情绪</td><td>听</td></tr><tr><td><strong>⑤ 转场</strong></td><td><strong>断</strong> —— 告诉观众「这里换段落了」</td><td>看（潜意识）</td></tr></table>
+<p><strong>每一层只干自己的事。</strong> 层与层打架，就是画面乱的根源。</p>
+<p><strong>实战反例</strong>：字幕说「点下面报名」，重点字也写「点下面报名」→ ②和③抢同一个活 → 观众 2 秒只读到 1 条信息。</p>
+<p><strong>修法</strong>：字幕陈述（他说的话），重点字下结论（压缩/对比/补充）。</p>
+<hr>
+<h2 class="mdh">心法 2️⃣ 每个选择都要能回答「为什么是它」</h2>
+<p>不能回答的，就是装饰；能回答的，才是叙事。</p>
+<table><tr><th>选择</th><th>坏答案</th><th>好答案</th></tr><tr><td>这里为什么用橙色？</td><td>好看</td><td><strong>这是全片痛点顶点，橙色只用在最核心的 3 处</strong></td></tr><tr><td>为什么用这个音效？</td><td>顺手</td><td><strong>这是 stamp 动画（砸），要低频冲击；whoosh 是「飞过去」，形状不对</strong></td></tr><tr><td>为什么这里加转场？</td><td>感觉该有</td><td><strong>这是口播→B-roll 的第一次结构性切换</strong></td></tr><tr><td>重点字为什么写这四个字？</td><td>这句话的重点</td><td><strong>「AI 课」观众认得，「一大堆」观众不认得</strong></td></tr></table>
+<p><strong>测试法</strong>：把你的每个决定念给一个不懂剪辑的人听。他听不懂「为什么」，就是你没想清楚。</p>
+<hr>
+<h2 class="mdh">心法 3️⃣ 先验证，再堆量</h2>
+<p>AI 剪辑最大的陷阱：<strong>一次改 30 个，然后不知道哪个错了。</strong></p>
+<p><strong>铁律：每改一步就渲一帧看。</strong></p>
+<p>云渲染是免费的、几秒的、不用等人的。</p>
+<p>今天所有的坑 —— 静音的轨道、50 秒的滴答声、洋红色粒子、逐字高亮跟着废字跑 —— <strong>全部是渲染出来才发现的</strong>，没有一个是读文档能预知的。</p>
+<p><strong>工具会撒谎，画面不会。</strong></p>
+<hr>
+<h1 class="mdh">第二部分：五层的决策规则</h1>
+<h2 class="mdh">② 字幕层</h2>
+<h3 class="mdh">目标</h3>
+<p><strong>让人静音也能看完。</strong>（社媒 80% 静音播放）</p>
+<h3 class="mdh">规则</h3>
+<table><tr><th>项</th><th>规则</th><th>为什么</th></tr><tr><td><strong>断句</strong></td><td><strong>一卡一行、一个完整词组</strong></td><td>允许两行 → 词组会在换行处被劈开（「这堂课」→「这堂 / 课」）</td></tr><tr><td><strong>长度</strong></td><td>一卡 ≤9 字（中文）</td><td>一眼读完的量</td></tr><tr><td><strong>断点</strong></td><td>落在<strong>词组边界</strong>，不是数到 N 个字就切</td><td>「做得出 / 东西是两件事」= 观众读到一半断气</td></tr><tr><td><strong>字体</strong></td><td>一支片只用一种</td><td>换字体 = 换品牌</td></tr><tr><td><strong>描边</strong></td><td><strong>衬线体（宋体）用阴影，不用描边</strong></td><td>描边 &gt;5px 会吃掉细笔画，宋体变黑体</td></tr><tr><td><strong>位置</strong></td><td>中间偏上或下三分之一，<strong>避开脸</strong></td><td>挡嘴 = 观众读不到表情</td></tr></table>
+<h3 class="mdh">🔴 中文特有：标点是地基</h3>
+<p><strong>如果转录没有标点，先把标点写回去，再调分页。</strong></p>
+<p>无标点 → 分页器只能按长度硬切 → 你会花一小时手工打断点去救。</p>
+<p>写回标点 → <strong>转录引擎自己重新分段</strong> → 分页自动就对了。</p>
+<p><strong>实战数据</strong>：2 大坨无标点长文 → 补 40 处标点 → <strong>26 个干净句子</strong>，21 个手工断点里 20 个变成多余。</p>
+<p><strong>顺带修好</strong>：标点能一刀切开 ASR 的黏词</p>
+<pre><code>&quot;张图会&quot;  → &quot;张图，&quot; + &quot;会写句&quot;      逗号进去 + 「会」还给下一句
+&quot;作图&quot;    → &quot;做，图&quot;                 错字 + 逗号 + 断句，一刀三修
+&quot;AIPPTAI&quot; → &quot;AI PPT、&quot; + &quot;AI 音乐、&quot;  拆开合体词</code></pre>
+<p><strong>心法</strong>：<strong>转录是可以改的源数据，不是只读的事实。</strong></p>
+<hr>
+<h2 class="mdh">③ 重点字层（花字）</h2>
+<h3 class="mdh">目标</h3>
+<p><strong>观众快划时，只看这一层也知道你在卖什么。</strong></p>
+<h3 class="mdh">四维同时叙事</h3>
+<h3 class="mdh">维度 1：文字 —— 挑「那个东西」，不挑形容词</h3>
+<table><tr><th>✅ 对</th><th>❌ 错</th><th>为什么</th></tr><tr><td><strong>AI 课</strong></td><td>一大堆</td><td>观众认得「AI 课」，不认得「一大堆」</td></tr><tr><td><strong>慢慢手做</strong></td><td>一条一条</td><td>「慢慢手做」是他每天在干的事；「一条一条」只是形容那个惨状</td></tr></table>
+<p><strong>测试法</strong>：这个词，观众能<strong>对号入座</strong>吗？</p>
+<h3 class="mdh">维度 2：长度 ≤5 字</h3>
+<blockquote><p>175px × 7 字 = 1225px &gt; 1080 画面宽 → <strong>装不下，会被切掉</strong></p></blockquote>
+<p>7 个字那不叫重点字，那叫句子。<strong>物理限制逼你想清楚重点到底是什么。</strong></p>
+<h3 class="mdh">维度 3：颜色 = 叙事</h3>
+<pre><code>中性色（白）→ 问题（还没有解方的世界）
+品牌色       → 解方（你的东西一出现，颜色就变了）
+强调色       → 最核心的 ≤3 处</code></pre>
+<p><strong>观众不读字，光看颜色变化就知道故事走到哪了。</strong></p>
+<p>🔴 <strong>深色品牌色打在深色底上 = 隐形。</strong> 品牌色好看 ≠ 任何底上都能用。中性色（白）反而更安全，<strong>而且正因为它中性，品牌色出现那一刻才有分量</strong>。</p>
+<h3 class="mdh">维度 4：形式 = 主次</h3>
+<pre><code>纯色字 = 常规（不挡画面，字本身是品牌色）
+色块底 = 最狠的 ≤5 个</code></pre>
+<p><strong>不用放大、不用变色，光靠「有没有底」就分出了主次。</strong></p>
+<h3 class="mdh">维度 5：动画 = 语气</h3>
+<table><tr><th>语气</th><th>动画</th></tr><tr><td>否定 / 痛点</td><td><strong>砸</strong>（整词从大缩小 + 震动）</td></tr><tr><td>列举 / 并列</td><td><strong>滑</strong>（逐个从同方向滑入）</td></tr><tr><td>揭晓 / 转折</td><td><strong>浪</strong>（逐字起伏）</td></tr><tr><td>承诺 / 陈述</td><td><strong>弹</strong>（轻快弹入）</td></tr></table>
+<p><strong>一个动画用 33 次 = 第 3 个还新鲜，第 20 个就是噪音。</strong></p>
+<hr>
+<h2 class="mdh">④ 声音层</h2>
+<h3 class="mdh">🔴 铁律 1：声音的「形状」必须匹配动画的「形状」</h3>
+<pre><code>逐字弹入 15 帧  ×  单发 whoosh  =  声音在开头，视觉爆点在 0.5 秒后  →  「不配」</code></pre>
+<p>这不是帧位没对齐，是<strong>两个东西的形状不一样</strong>。</p>
+<p><strong>修法二选一</strong>：</p>
+<ul><li>把动画压进 5 帧内（让它变成「单发」）</li><li>或换成连续音（打字机声配逐字）</li></ul>
+<p><strong>类别对照</strong>：</p>
+<table><tr><th>声音</th><th>是什么形状</th></tr><tr><td><strong>whoosh</strong></td><td>东西<strong>飞过去</strong></td></tr><tr><td><strong>boom / bass riser</strong></td><td>东西<strong>砸下来</strong></td></tr><tr><td><strong>click / 齿轮</strong></td><td>东西<strong>卡进位</strong></td></tr><tr><td><strong>riser</strong></td><td>期待<strong>在累积</strong></td></tr></table>
+<p><strong>字砸下来配 whoosh = 用错类别，帧位再准也不配。</strong></p>
+<h3 class="mdh">🔴 铁律 2：功能对 ≠ 调性对</h3>
+<p><strong>这是全篇最根本的一条。</strong></p>
+<p>某音效的官方说明写着「适合<strong>重点字幕</strong>」—— 功能上完全正确。</p>
+<p>但它是<strong>网络迷因音效</strong>，带戏谑/反讽语气。打在学院的专业广告上 = 调性灾难。</p>
+<p><strong>库里的说明只告诉你它「做什么」，不告诉你它「听起来像什么文化」。</strong></p>
+<h3 class="mdh">三问判断法（每个候选音效都要过一遍）</h3>
+<blockquote><p><strong>① 形状对不对？</strong> —— 这是砸、飞、卡进位、还是在累积？跟动画的形状匹配吗？<br><strong>② 这个声音属于哪个文化圈？</strong> —— 它在哪里被听过？谁在用它？<br><strong>③ 那个文化圈，跟这个品牌是同一群人吗？</strong></p></blockquote>
+<p><strong>第 ② 问是关键，也是最容易跳过的。</strong> 说明书永远不会写「这是 Z 世代玩梗音」——</p>
+<p>你得自己问：<strong>「我在哪听过这个声音？」</strong></p>
+<table><tr><th>声音</th><th>① 形状</th><th>② 文化圈</th><th>③ 学院品牌？</th></tr><tr><td>vine-boom</td><td>砸 ✅</td><td><strong>迷因剪辑 / 玩梗</strong></td><td>❌ 灾难</td></tr><tr><td>罐头笑声</td><td>—</td><td><strong>情景喜剧</strong></td><td>❌</td></tr><tr><td>唱片刮擦</td><td>断 ✅</td><td><strong>DJ / 喜剧打断</strong></td><td>❌</td></tr><tr><td>RGB 故障</td><td>断 ✅</td><td><strong>电竞 / 赛博</strong></td><td>❌</td></tr><tr><td>低频 whoosh</td><td>砸 ✅</td><td><strong>电影预告 / 商业片</strong></td><td>✅</td></tr><tr><td>齿轮卡扣</td><td>卡 ✅</td><td><strong>精密机械 / 工业</strong></td><td>✅</td></tr></table>
+<p><strong>⚠️ 没有绝对的禁忌音。</strong> 唱片刮擦在潮牌片里是神来之笔，罐头笑声在综艺里是刚需。</p>
+<p><strong>只有「这个声音的文化圈」和「这个品牌的人群」对不对得上。</strong></p>
+<h3 class="mdh">AI 的职责：主动找，不是查表</h3>
+<p><strong>黑名单是防守思维，而且会过时</strong>（库一更新就废）。</p>
+<p><strong>正确做法：拿到品牌人格后，对整个库跑一遍三问，把「过了三问」的候选列出来，说明每个为什么合适。</strong></p>
+<pre><code>❌ 「这几个不能用」
+✅ 「你是学院品牌 → 我在 35 个音效里过了一遍三问 →
+    这 8 个形状和文化圈都对：deep-short-whoosh（电影预告感）、
+    gear-turn-click（精密机械，而且你的论点就是&quot;串成一台机器&quot;）...
+    这 6 个形状对但文化圈不对：vine-boom（迷因）...」</code></pre>
+<p><strong>每次剪片重跑一遍。</strong> 库会变、品牌会变、片子的调性会变。</p>
+<h3 class="mdh">🔴 铁律 3：声音出问题，先查开关，再查音量</h3>
+<p><strong>实战</strong>：BGM「太小声」调了三轮（16%→62%→85%）—— <strong>那条轨是静音的</strong>。</p>
+<p>静音的症状和音量不足<strong>一模一样</strong>，所以你会一直往音量上修，可以修十轮。</p>
+<p><strong>顺序：① 轨道是不是 muted？② 是不是压了两层？③ 才是音量。</strong></p>
+<h3 class="mdh">🔴 铁律 4：别压两层</h3>
+<p>自动闪避（ducking）+ 手动压低 = 叠加衰减，几乎无声。</p>
+<p><strong>闪避管「人声下压低」，底噪就该是正常音量。</strong></p>
+<pre><code>BGM 底噪 ≈ -1.4dB   +   闪避深度 -19dB
+→ 空档处大声、他一开口就压下去</code></pre>
+<h3 class="mdh">铁律 5：音效长度差 20 倍</h3>
+<p><code>快门 6 帧</code> vs <code>时钟滴答 1508 帧（50 秒循环）</code></p>
+<p>**循环类音效（<code>*-loop</code>, <code>*-tick</code>）加之前必须看时长，加完必须裁 + 淡出。**</p>
+<hr>
+<h2 class="mdh">⑤ 转场层</h2>
+<h3 class="mdh">铁律 1：转场需要「切点」</h3>
+<p><strong>先用工具侦测素材里的真实切点</strong>（scene detection），别凭感觉切。</p>
+<pre><code>ffmpeg -i in.mp4 -filter:v &quot;select=&#x27;gt(scene,0.15)&#x27;,showinfo&quot; -f null - 2&gt;&amp;1 \
+  | grep -oE &#x27;pts_time:[0-9.]+&#x27;</code></pre>
+<h3 class="mdh">铁律 2：只在<strong>结构性</strong>节点打</h3>
+<p>实战：侦测出 16 个切点，<strong>只用了 6 个</strong>。</p>
+<p>中间那 10 个是快切蒙太奇 —— 本来就密，再加转场就是噪音。</p>
+<blockquote><p>「无论选多少个切换效果，都要确保足够的时间和空间，<strong>而不会因为剪辑而分散注意力</strong>」</p></blockquote>
+<h3 class="mdh">铁律 3：一支片不要用同一种转场</h3>
+<p>6 个切点 = 6 种不同转场，<strong>每种匹配它那一刀的内容</strong>：</p>
+<table><tr><th>内容</th><th>转场</th></tr><tr><td>从「人」切到「物」</td><td><strong>失焦→回焦</strong>（注意力转移）</td></tr><tr><td>揭晓前</td><td><strong>先缩后推</strong>（制造期待）</td></tr><tr><td>主角回到画面</td><td><strong>爆闪</strong>（亮点）</td></tr><tr><td>进收尾段</td><td><strong>最柔的一个</strong>（情绪落下来）</td></tr></table>
+<h3 class="mdh">铁律 4：速度</h3>
+<p><strong>竖屏广告：10–14 帧（0.33–0.47 秒）。1 秒太拖。</strong></p>
+<hr>
+<h1 class="mdh">第三部分：通用工作流</h1>
+<pre><code>① 建项目 —— 参数按工具的默认值，别按素材的真实值 ⚠️
+       （工具引擎常常硬编码某个 fps，你「诚实」地填原片 fps 反而会炸）
+②  上传 → 转录
+③  🔴 修转录：标点 + 错字 + 黏词      ← 一切的地基
+④  切片段（如果要转场）              ← 必须在断句之前，否则断句会被孤儿化
+⑤  字幕：字体 / 断句 / 位置
+⑥  🔴 先翻库！                        ← 别急着手写
+⑦  铺重点字 → 转场 → 特效 → 音效
+⑧  混音：人声=anchor，BGM=follower + 闪避深度
+⑨  🔴 查所有轨道的 muted 状态
+⑩  逐帧验 → 导出</code></pre>
+<h2 class="mdh">🔴 顺序错了会赔的两处</h2>
+<table><tr><th>错误顺序</th><th>后果</th></tr><tr><td>先断句 → 再切片段</td><td><strong>切片段会销毁 item ID → 所有断句覆盖失效</strong></td></tr><tr><td>先手写 MG → 再翻库</td><td>库里有现成的一模一样的（实战：210 个 MG 一个没翻，全部从零写）</td></tr></table>
+<h2 class="mdh">🔴 每一步都渲一帧</h2>
+<p><strong>工具会撒谎，画面不会。</strong></p>
+<p>今天所有的坑，<strong>全部是渲染出来才发现的</strong>：</p>
+<p>静音的轨道 · 50 秒的滴答声 · 洋红色粒子 · 逐字高亮跟着废字跑 · 品牌名被劈成两行 · 打点压在眼镜上</p>
+<p>没有一个是读文档能预知的。</p>
+<hr>
+<h1 class="mdh">第四部分：固定参数 vs 必问参数</h1>
+<p><strong>分清楚这两类，是这套 SOP 能不能给别人用的关键。</strong></p>
+<p>搞混 = 把某个品牌的答案硬套给别的行业。</p>
+<h2 class="mdh">🔒 固定参数（物理/生理限制，跟品牌无关，别问，直接用）</h2>
+<p>这些数字不是审美偏好，是<strong>画面宽度和人眼阅读速度算出来的</strong>。</p>
+<table><tr><th>项</th><th>值（1080×1920 竖屏）</th><th>为什么是这个数</th></tr><tr><td><strong>字幕字号</strong></td><td><strong>145px</strong>（= 画幅高 7.6%）</td><td>再小读不清，再大句子就碎成 2-5 字</td></tr><tr><td><strong>字幕断句</strong></td><td><strong>1 行 × ≤9 字</strong></td><td>2 行会在换行处劈开词组</td></tr><tr><td><strong>字幕描边</strong></td><td><strong>≤5px</strong>（衬线体用阴影）</td><td>&gt;5px 吃掉宋体细笔画</td></tr><tr><td><strong>重点字字号</strong></td><td><strong>175px</strong></td><td>比字幕大 <strong>1.21 倍</strong> —— 分得出主次又不抢戏</td></tr><tr><td><strong>重点字长度</strong></td><td><strong>≤5 字</strong></td><td>175px × 7 字 = 1225px &gt; 1080 画面宽，<strong>装不下</strong></td></tr><tr><td><strong>重点字色块</strong></td><td><strong>≤5 个</strong></td><td>超过就不叫「最狠的」了</td></tr><tr><td><strong>强调色用量</strong></td><td><strong>≤3 处</strong></td><td>同上</td></tr><tr><td><strong>动画时长</strong></td><td><strong>压进 5 帧内</strong></td><td>超过声音就对不上爆点</td></tr><tr><td><strong>转场时长</strong></td><td><strong>10–14 帧</strong>（0.33–0.47 秒）</td><td>1 秒在竖屏广告里太拖</td></tr><tr><td><strong>转场数量</strong></td><td><strong>只打结构性节点</strong></td><td>实战：侦测 16 个切点，只用 6 个</td></tr><tr><td><strong>BGM</strong></td><td><strong>底噪 ≈ −1.4dB + 闪避 −19dB</strong></td><td>闪避管压低，底噪就该正常</td></tr><tr><td><strong>音效</strong></td><td><strong>+5dB</strong></td><td>默认音量太礼貌</td></tr><tr><td><strong>打点密度</strong></td><td><strong>≈ 每 2.5–3.5 秒一个</strong></td><td>更密会晕</td></tr></table>
+<p><strong>这 13 个数字，换行业不用改。</strong> 改的是下面那些。</p>
+<hr>
+<h2 class="mdh">❓ 必问参数（跟品牌定位绑死，<strong>不问就是瞎猜</strong>）</h2>
+<h3 class="mdh">🔴 最容易翻车的一条：品牌色 ≠ 屏幕上能用的色</h3>
+<p><strong>实战</strong>：SUMA 的品牌深蓝 <code>#0F75BC</code> 是正式品牌色。打在<strong>主播的深藏青队服</strong>和<strong>暗色笔记本 B-roll</strong> 上 → <strong>隐形</strong>。</p>
+<p><strong>色卡是印刷逻辑（白纸底），影片是任意底。</strong></p>
+<p>所以问品牌色的时候，<strong>不能只问「你的品牌色是什么」，要问「这个色打在你的素材上读得清吗」。</strong></p>
+<p><strong>中性色（白）反而更安全</strong> —— 而且正因为它中性，<strong>品牌色出现那一刻才有分量</strong>。</p>
+<hr>
+<h1 class="mdh">第五部分：教练式提问脚本</h1>
+<blockquote><p><strong>调用这份 SOP 时，进入「交互教练模式」：不是丢文档，是一次问一题，陪对方把参数定出来。</strong><br><strong>固定参数不问（直接用），必问参数一个都不能跳。</strong></p></blockquote>
+<h2 class="mdh">开场白</h2>
+<blockquote><p>「开始剪之前，我要先跟你确认 5 件事。<strong>这 5 个答错，后面剪得再漂亮都是错的。</strong><br>我一次问一题，你不确定的就说不确定，我们一起推。」</p></blockquote>
+<hr>
+<h2 class="mdh">Q1 — 你在卖什么？给谁？</h2>
+<blockquote><p><strong>「一句话：你这支片要让谁，做什么事？」</strong></p></blockquote>
+<p><strong>为什么先问这个</strong>：它决定后面全部四题。</p>
+<p><strong>追问</strong>：「他现在的痛是什么？他会因为什么不信你？」</p>
+<p><strong>输出</strong>：一句定位。例：「让想搞副业的上班族，报名线下 AI 实操课」</p>
+<hr>
+<h2 class="mdh">Q2 — 三个色</h2>
+<blockquote><p><strong>「你的品牌色是什么？给我色号。」</strong><br><strong>「⚠️ 但先别急 —— 你的素材主色调是什么？主播穿什么颜色？B-roll 是亮的还是暗的？」</strong></p></blockquote>
+<p><strong>然后现场判断：</strong></p>
+<table><tr><th>情况</th><th>结论</th></tr><tr><td>品牌色 vs 素材底色<strong>对比够</strong></td><td>✅ 品牌色可以当重点字色</td></tr><tr><td>品牌色<strong>偏暗</strong>，素材也偏暗</td><td>🔴 <strong>品牌色只能用在色块底，不能当字色</strong>。字色用白</td></tr><tr><td>品牌色<strong>偏亮</strong>，素材也偏亮</td><td>🔴 同理，反过来</td></tr></table>
+<blockquote><p>**「所以我建议：中性色 <code>白</code> = 问题段，你的品牌色 <code>XXX</code> = 解方段，强调色 <code>XXX</code> = 最核心的 3 处。<br>这个分配跟你的品牌定位对得上吗？还是你有别的想法？」**</p></blockquote>
+<p><strong>🔴 必须让他确认「对得上定位」，不是只确认「颜色好看」。</strong></p>
+<p><strong>输出</strong>：</p>
+<pre><code>中性色  = ______   （问题 —— 客户现在的世界）
+品牌色  = ______   （解方 —— 你一出现，颜色就变）
+强调色  = ______   （最核心 ≤3 处）</code></pre>
+<hr>
+<h2 class="mdh">Q3 — 字体 = 你的品牌人格</h2>
+<blockquote><p><strong>「你希望观众觉得你是哪一种？」</strong></p></blockquote>
+<table><tr><th>选</th><th>字体</th><th>人格</th></tr><tr><td>A</td><td><strong>宋体 / 衬线</strong></td><td>权威、有分量、有文人气 —— 学院、律所、医疗、高端</td></tr><tr><td>B</td><td><strong>黑体 / 无衬线</strong></td><td>现代、清晰、中性 —— 科技、SaaS、B2B</td></tr><tr><td>C</td><td><strong>圆体</strong></td><td>亲和、软 —— 母婴、餐饮、生活</td></tr><tr><td>D</td><td><strong>手写 / 显示体</strong></td><td>个性、玩 —— 潮牌、娱乐</td></tr></table>
+<p><strong>追问</strong>：「你现有的官网/海报用什么字体？影片要跟它一致。」</p>
+<p><strong>🔴 授权红线</strong>：确认是<strong>免费商用</strong>字体。</p>
+<ul><li>✅ 思源宋体 <code>Noto Serif SC</code> / 思源黑体 <code>Noto Sans SC</code> —— 开源免费商用</li><li>❌ 极宋 / 研宋 / 方正 / 汉仪 —— <strong>付费字库，商用有维权风险</strong></li></ul>
+<hr>
+<h2 class="mdh">Q4 — 你的品牌人格（<strong>问人格，不是问音效</strong>）</h2>
+<p><strong>🔴 不要问「你要什么音效」</strong> —— 他不知道，他也不该知道。<strong>那是你的活。</strong></p>
+<blockquote><p><strong>「你的客户，会因为什么声音，觉得你不专业？」</strong></p></blockquote>
+<p><strong>这题比「你想要什么感觉」有用 100 倍</strong> —— 人说不清自己要什么，但很清楚自己不要什么。</p>
+<p><strong>追问两题把人格钉死：</strong></p>
+<blockquote><p>「如果你的品牌是个人，他说话是什么样？<strong>沉稳？热情？还是爱开玩笑？</strong>」<br>「你最不想被误认成哪一类同行？」</p></blockquote>
+<p><strong>输出</strong>：一句人格。例：</p>
+<ul><li>「沉稳、有底气、不玩梗」（学院）</li><li>「热情、快、有梗」（潮牌）</li><li>「安静、克制、贵」（高端）</li></ul>
+<hr>
+<h3 class="mdh">然后是 <strong>AI 的活</strong>，不是客户的活</h3>
+<p>拿到人格 → <strong>对整个音效库跑一遍三问</strong> → 列出候选 + 每个的理由。</p>
+<pre><code>「你是『沉稳、有底气、不玩梗』
+ → 我把 35 个音效过了一遍三问（形状 / 文化圈 / 是不是同一群人）
+
+ ✅ 过了的 8 个：
+   deep-short-whoosh —— 砸 · 电影预告感 · 有分量不搞笑
+   gear-turn-click   —— 卡进位 · 精密机械 · 而且你的论点就是「串成一台机器」，
+                        齿轮声打在产出清单上，声音本身在演绎主题
+   short-drum-roll   —— 揭晓 · 颁奖/公布 · 庄重
+   ...
+ ❌ 形状对但文化圈不对的 6 个：
+   vine-boom —— 砸对了，但它是 Z 世代玩梗标志音
+   ...
+
+ 你觉得哪几个像你？」</code></pre>
+<p><strong>🔴 三条纪律：</strong></p>
+<ol><li><strong>不给黑名单，给候选 + 理由</strong> —— 黑名单是防守，候选是提案</li><li><strong>每次剪片重跑一遍</strong> —— 库会更新，片子的调性也会变</li><li><strong>没有绝对禁忌音</strong> —— 唱片刮擦在潮牌片里是神来之笔。<strong>只有「这个声音的文化圈」和「这个品牌的人群」对不对得上</strong></li></ol>
+<h3 class="mdh">参考：常见行业的判断结果（是<strong>结论</strong>，不是规则 —— 每次自己重跑）</h3>
+<table><tr><th>行业</th><th>通常合适</th><th>通常不合适，因为</th></tr><tr><td>学院 / 教育</td><td>低频 whoosh · 鼓点 · 齿轮</td><td>迷因音 → 家长觉得不靠谱</td></tr><tr><td>医美 / 诊所</td><td>柔和 · ding</td><td>冲击音 → 不严肃</td></tr><tr><td>餐饮 / 零售</td><td>轻快 pop · 快门</td><td>庄重鼓点 → 显得贵</td></tr><tr><td>服装 / 美妆</td><td>空气感 · 柔和</td><td>机械齿轮 → 跟「柔软」冲突</td></tr><tr><td>装修 / 工程</td><td>齿轮 · 低频</td><td>气泡 pop → 跟「扎实」冲突</td></tr><tr><td>潮牌 / 娱乐</td><td>迷因 · 刮擦 · 故障</td><td>庄重鼓点 → 装</td></tr></table>
+<hr>
+<h2 class="mdh">Q5 — 重点字：圈出「客户能对号入座」的词</h2>
+<blockquote><p><strong>「把你的脚本给我。我们一句一句过，圈出</strong>客户看到会说『啊这就是我』<strong>的那个词。」</strong></p></blockquote>
+<p><strong>现场示范一次，然后让他自己圈：</strong></p>
+<table><tr><th>✅ 对号入座</th><th>❌ 形容词</th></tr><tr><td><strong>考不到 A</strong></td><td>成绩不好</td></tr><tr><td><strong>卡粉</strong></td><td>皮肤不好</td></tr><tr><td><strong>翻台率</strong></td><td>生意差</td></tr><tr><td><strong>压货</strong></td><td>库存多</td></tr><tr><td><strong>超预算</strong></td><td>花很多钱</td></tr><tr><td><strong>慢慢手做</strong></td><td>一条一条</td></tr></table>
+<blockquote><p><strong>「测试法：这个词，你的客户会不会『啊这就是我』？会 = 留；只是形容 = 换。」</strong></p></blockquote>
+<p><strong>追问</strong>：「≤5 个字。装不下，通常是因为你还没想清楚重点到底是什么。」</p>
+<hr>
+<h2 class="mdh">问完之后：回读确认</h2>
+<blockquote><p>「我复述一遍，你确认：<br>- 卖给 <code>______</code>，让他 <code>______</code><br>- 中性 <code>___</code> / 品牌 <code>___</code> / 强调 <code>___</code> —— 跟你的定位一致<br>- 字体 <code>______</code>（免费商用 ✅）<br>- 音效黑名单：<code>______</code><br>- 重点字 <code>N</code> 个：<code>______</code><br><br>对的话我开始剪，每改一步渲一帧给你看。」</p></blockquote>
+<hr>
+<h2 class="mdh">🔴 教练模式的三条纪律</h2>
+<ol><li><strong>一次只问一题</strong> —— 一次抛 5 题，他会挑最好答的答，最重要的那题反而糊过去</li><li><strong>固定参数不要问他</strong> —— 问「字幕要多大」= 把你的专业判断推给客户。<strong>145px 是算出来的，不是偏好</strong></li><li><strong>必问参数一个都不能替他决定</strong> —— 尤其品牌色。<strong>你觉得好看 ≠ 符合他的定位</strong></li></ol>
+<hr>
+<h1 class="mdh">第六部分：换行业怎么用</h1>
+<p><strong>这套方法跟行业无关，跟「你在卖什么」有关。</strong></p>
+<h2 class="mdh">三步适配</h2>
+<h3 class="mdh">第 1 步：找你的三个色</h3>
+<pre><code>中性色  →  问题（客户现在的世界）
+品牌色  →  解方（你一出现，颜色就变）
+强调色  →  最核心的 ≤3 处</code></pre>
+<h3 class="mdh">第 2 步：找你的调性圈</h3>
+<p>先回答：<strong>我的客户会因为什么声音觉得我不专业？</strong></p>
+<table><tr><th>行业</th><th>黑名单</th></tr><tr><td>医美 / 诊所</td><td>任何冲击音、玩梗音 —— 会显得不严肃</td></tr><tr><td>补习 / 教育</td><td>迷因音、综艺音 —— 家长会觉得不靠谱</td></tr><tr><td>餐饮 / 零售</td><td>过度庄重的鼓点 —— 会显得贵</td></tr><tr><td>服装 / 美妆</td><td>机械齿轮声 —— 跟「柔软」冲突</td></tr><tr><td>装修 / 工程</td><td>气泡 pop —— 跟「扎实」冲突</td></tr></table>
+<h3 class="mdh">第 3 步：找你的重点字</h3>
+<p><strong>在你的脚本里，圈出「客户能对号入座的那个东西」。</strong></p>
+<table><tr><th>行业</th><th>✅ 对号入座</th><th>❌ 形容词</th></tr><tr><td>补习</td><td><strong>考不到 A</strong></td><td>成绩不好</td></tr><tr><td>医美</td><td><strong>卡粉</strong></td><td>皮肤不好</td></tr><tr><td>餐饮</td><td><strong>翻台率</strong></td><td>生意差</td></tr><tr><td>服装</td><td><strong>压货</strong></td><td>库存多</td></tr><tr><td>装修</td><td><strong>超预算</strong></td><td>花很多钱</td></tr></table>
+<p><strong>测试法</strong>：这个词，客户看到会不会「啊这就是我」？</p>
+<hr>
+<h1 class="mdh">第七部分：教学脚本</h1>
+<h2 class="mdh">一句话总结这堂课</h2>
+<blockquote><p><strong>AI 能在 3 秒给你 35 个音效。它不会告诉你哪一个适合你。</strong><br><strong>这堂课教的不是「怎么用剪辑 AI」，是「怎么判断」。</strong></p></blockquote>
+<h2 class="mdh">教学顺序（每步都让学员动手）</h2>
+<table><tr><th>步</th><th>教什么</th><th>学员练什么</th></tr><tr><td>1</td><td><strong>五层模型</strong></td><td>拿一支自己的片，指出哪层在打架</td></tr><tr><td>2</td><td><strong>重点字：挑东西不挑形容词</strong></td><td>圈出自己脚本里 5 个「客户能对号入座」的词</td></tr><tr><td>3</td><td><strong>颜色叙事</strong></td><td>定自己的三个色（中性/品牌/强调）</td></tr><tr><td>4</td><td><strong>形状匹配</strong></td><td>听 4 个音效，说出哪个是「砸」哪个是「飞」</td></tr><tr><td>5</td><td><strong>功能 vs 调性</strong></td><td>列出自己行业的音效黑名单</td></tr><tr><td>6</td><td><strong>验证循环</strong></td><td>每改一步渲一帧，找出 1 个只有画面才能发现的 bug</td></tr></table>
+<h2 class="mdh">三个必须让学员踩一次的坑</h2>
+<p><strong>不踩不会信：</strong></p>
+<ol><li><strong>让他用形容词做重点字</strong> → 渲出来自己看 →「一大堆」vs「AI 课」的差别一眼就懂</li><li><strong>让他给逐字动画配单发 whoosh</strong> → 听出来「不配」→ 才懂形状匹配</li><li><strong>让他只看说明选音效</strong> → 选到调性不对的 → 才懂功能 ≠ 调性</li></ol>
+<h2 class="mdh">结课检验</h2>
+<p><strong>给学员一支陌生行业的片，要求：</strong></p>
+<ul><li>说出五层各自在干什么</li><li>圈出 5 个重点字，并说明为什么是「东西」不是「形容词」</li><li>定三个色，并说明中性色为什么不能用品牌色</li><li>选 3 个音效，并说明<strong>功能</strong>和<strong>调性</strong>两步各是怎么过的</li></ul>
+<p><strong>答得出 = 学会了；答不出 = 只是会点按钮。</strong></p>
+<hr>
+<h1 class="mdh">附：一句话规则卡（打印贴墙）</h1>
+<pre><code>① 分层：画面读 / 字幕读 / 重点字喊 / 声音推 / 转场断  —— 各干各的
+② 每个选择都要能回答「为什么是它」
+③ 每改一步渲一帧 —— 工具会撒谎，画面不会
+
+④ 标点是地基，不是排版细节
+⑤ 重点字挑「东西」，不挑形容词
+⑥ 重点字 ≤5 字 —— 装不下就是没想清楚
+⑦ 颜色 = 叙事：中性=问题 → 品牌=解方 → 强调 ≤3 处
+⑧ 形式分主次：纯色字=常规，色块底 ≤5 个
+⑨ 声音形状要匹配动画形状 —— 砸配 boom，飞配 whoosh
+⑩ 三问：形状对？文化圈是哪个？跟这个品牌同一群人吗？ ← 最容易翻车
+   （没有禁忌音，只有「对不对得上」。别背黑名单，每次重跑一遍）
+⑪ 声音出问题：先查开关 → 再查压了几层 → 最后才是音量
+⑫ 转场只打结构性节点，一支片不重复用同一种
+⑬ 先翻库，再手写
+⑭ 顺序：修转录 → 切片段 → 断句（反了会全部作废）</code></pre></div><div class="pb md"><hr>
+<p>name: script-to-video-prompt</p>
+<p>description: &gt;-</p>
+<p>  引导式工作流：把一个 script 变成可直接生成的 AI 口播视频。拿到 script 就自动开始，</p>
+<p>  不要问「你想我做什么」、不要给选项菜单。三步：(1) 读 script → 问方向（性别/年龄/气质/场景）；</p>
+<p>  (2) 九宫格选人（9 张不同的脸）→ 你回号码 → 定妆照锁脸；(3) 逐镜生成 prompt。</p>
+<p>  触发词：给了 script / 「帮我做 video prompt」/「new script」/「make a video」/「shot list」/</p>
+<p>  「Seedance prompt」/「分镜」/「口播」。跟用户说话一律中英双语；生成 prompt 一律纯英文。</p>
+<p>metadata:</p>
+<p>  type: reference</p>
+<p>  scope: AI内容课 · Session 3 · 视频生产线（前段：出片）</p>
+<hr>
+<h1 class="mdh">Script → Video Prompt</h1>
+<p>把一个 script 变成可以直接生成的 AI 口播视频。<strong>这是视频生产线的前段。</strong></p>
+<pre><code>【本 skill】script → 选人 → 逐镜 prompt → 生成
+       ↓
+【CHATCUT-SKILL.md】剪辑：字幕 / 花字 / 音效 / BGM</code></pre>
+<hr>
+<h2 class="mdh">🔴 规则不在这份文件里</h2>
+<blockquote><p><strong>所有硬规则以 <code>README.md</code>（本包同目录）为准 —— 这份只管「怎么走流程」。</strong><br><br>每次要写 prompt 之前，<strong>先读 README</strong>，照它的：<br>- <strong>§0</strong> 九宫格 / 定妆照 / 真实感条款的模板<br>- <strong>§1</strong> 强制无字幕（漏了必烤字幕）<br>- <strong>§2</strong> 照片级真人 + 眨眼 + 眼珠会动<br>- <strong>§4</strong> B-roll 规则 · <strong>§4.5</strong> 口型对齐「静音生成 + TTS 合声」<br>- <strong>§5</strong> 选声 · <strong>§6</strong> 台词 · <strong>§7</strong> 背景 · <strong>§8</strong> 合规红线<br>- <strong>参数</strong>：480p + <code>mode fast</code><br><br><strong>为什么分开：</strong> 规则会随实测更新（已经改过好几轮），流程不会。两边都写 = 改一处另一处变旧 = 你教课时拿到过期那份。</p></blockquote>
+<blockquote><p>⚠️ <strong>2026-06 的旧版已作废</strong>（<code>_archive/</code>）。它教「每镜结尾 <code>Saying:</code> 用原生讲话」——实测那样<strong>必烤字幕、声音每镜会飘</strong>。真人口播镜一律走 README §4.5 的「静音生成 + 合声」。</p></blockquote>
+<hr>
+<h2 class="mdh">⚡ 自动开始 — 不要问要做什么</h2>
+<p>拿到 <strong>script</strong>（贴的文字 or 上传的档，里面有场景/台词/分镜方向，如 &quot;SCENE 1&quot;、&quot;SHOT&quot;、&quot;旁白&quot;、&quot;口播&quot;、&quot;台词&quot;、&quot;分镜&quot;）→ <strong>立刻开工</strong>。</p>
+<ul><li>❌ 别问「你想我怎么处理这个？」</li><li>❌ 别给选项菜单（做 prompt / 检查 / …）</li><li>❌ 别等更多指示</li><li>✅ 直接 <strong>Step 0 读 script → Step 1 问方向</strong></li></ul>
+<p><strong>拿到 script 本身就是指令。</strong> 收到 script = 「帮我把这个做成视频」。</p>
+<h2 class="mdh">语言规则 — 严格</h2>
+<ul><li><strong>用户读到的每一句都要中英双语：中文在前，English 在后。</strong> 问题标题、<strong>每一个选项</strong>、开场白、过场句、说明、确认、提醒 —— 全部。<strong>不准只有英文或只有中文的句子。</strong></li><li>格式示例：<code>主场景 script 说「卧室或厨房」，你要哪个？/ Main scene — the script says &quot;bedroom or kitchen&quot;, which do you prefer?</code></li><li><strong>唯一例外</strong>：code block 里的<strong>生成 prompt</strong> 一律<strong>纯英文</strong> —— 英文对模型更精准。</li></ul>
+<hr>
+<h2 class="mdh">STEP 0 — 先读 script</h2>
+<ol><li>认真读。记下<strong>已经写明的</strong>：性别、年龄、性格、地点、产品。</li><li>🔴 <strong>script 已经答了的，永远不要再问。</strong> 写着「一个年轻妈妈在厨房」→ 性别（女）、年龄（26–35）、地点（厨房）都有了，跳过，只补/确认。</li><li>一句话确认你读了（点名产品/角度），然后直接进 Step 1，<strong>只问缺的</strong>。</li></ol>
+<blockquote><p>收到你的 script 了 ✅ 我先帮你确认几个方向再开始。<br>Got your script ✅ Let me lock a few directions before we start.</p></blockquote>
+<hr>
+<h2 class="mdh">STEP 1 — 确认方向</h2>
+<p><strong>分 2 轮问，别一次全倒。跳过 script 已答的。</strong> 给<strong>编号选项</strong>，用户回数字就行。</p>
+<blockquote><p>🔒 <strong>规则定死的，永远不问</strong>：人物 = 你的目标市场 · 地点 = 目标市场风格 · 照片级真实 · 9:16。<strong>这些不是问题。</strong></p></blockquote>
+<h3 class="mdh">Round 1 — 人物</h3>
+<p><strong>Q1. 性别 / Gender</strong>（script 有暗示就跳过）</p>
+<ol><li>男性 / Male  2. 女性 / Female</li></ol>
+<p><strong>Q2. 年龄段 / Age range</strong></p>
+<ol><li>18–25 年轻 · 2. 26–35 轻熟 · 3. 36–45 成熟 · 4. 46–60 中年 · 5. 60+ 年长</li></ol>
+<p><strong>Q3. 气质 / Vibe</strong>（可多选）</p>
+<ol><li>亲和邻家 · 2. 专业精英 · 3. 清新自然 · 4. 时尚潮流 · 5. 高级冷艳 · 6. 活力运动 · 7. 温柔治愈 · 8. 成熟稳重</li></ol>
+<h3 class="mdh">Round 2 — 场景（最重要的创意问题）</h3>
+<p>🔴 <strong>核心规则：给「不同地点」，不是「同一个地方的不同风格」。</strong></p>
+<pre><code>❌ 别这样：同一个厨房的三种风格 — kitchen style A / B / C
+✅ 要这样：不同地点 — 厨房 / 客厅 / 公园 / 商场 / 超市</code></pre>
+<ul><li><strong>script 点名了地点</strong> → 保留它，但<strong>另外给 2–4 个不同地点</strong>让用户能换。</li><li><strong>script 没地点</strong> → 给 <strong>3–5 个不同地点</strong>。</li><li>每个都要带：本地生活细节 + 光线 + 道具。</li></ul>
+<h3 class="mdh">收尾 — 确认总结</h3>
+<p>比例/时长/情绪/调色/节奏<strong>不问</strong>（规则定死）。拿到人物 + 场景 → 回读一遍，<strong>等用户回 yes 才生成</strong>。</p>
+<pre><code>🎬 方向确认 / Direction locked
+- 人物 Character: [目标市场] 女性, 26–35, 清新自然
+- 场景 Scene: [具体地点 + 细节]
+- 固定 Fixed: 9:16 · 照片级真实（真相机感，无 AI 味）</code></pre>
+<blockquote><p>这样对吗？回复 <strong>yes</strong> 我帮你生成选人九宫格。<br>Looks right? Reply <strong>yes</strong> and I&#x27;ll generate your casting grid.</p></blockquote>
+<hr>
+<h2 class="mdh">STEP 2 — 锁定人物</h2>
+<p><strong>目的：钉死一张脸，让全片同一个人。</strong></p>
+<blockquote><p>⏭️ <strong>有真人出镜（老板/讲师本尊）→ 整个 Step 2 跳过</strong>，直接用他的 3 张脸参考图进 Step 3。</p></blockquote>
+<h3 class="mdh">2a — 九宫格选人</h3>
+<p><strong>照 README §0a 的模板生成</strong>（<code>generate_image</code>，1:1 正方）。</p>
+<p>🔴 <strong>两条最容易错的：</strong></p>
+<ul><li><strong>9 个不同的人，不是同一张脸换 9 个发型</strong> → 模板里<strong>先把五官写死，再写头发</strong>。</li><li><strong>把 9 张脸的清单输出给用户看</strong> → 他才知道几号是谁。</li></ul>
+<p><strong>⏸️ 停。等用户回号码（1–9）。只能选 1 个。别往下做。</strong></p>
+<h3 class="mdh">2b — 定妆照锁脸</h3>
+<p>拿到号码后，<strong>照 README §0b 的模板</strong>：把九宫格原图当参考图送回去，prompt 里<strong>点名号码</strong>。</p>
+<p>🔴 <strong>不点名号码 = 9 张脸糊成一个「平均脸」</strong>，跟用户选的不是同一个人。</p>
+<p>建议出 <strong>3 张不同角度</strong>（正脸 / 侧一点 / 微笑）→ 正好是 Step 3 要的 3 张脸参考图。</p>
+<p><strong>⏸️ 等用户确认定妆照 OK 再做 Step 3。</strong></p>
+<hr>
+<h2 class="mdh">STEP 3 — 逐镜 prompt</h2>
+<p>一镜一段，<strong>可直接生成</strong>。</p>
+<blockquote><p>🔒 每一镜都带：锁定的人物（重述）· 选定的地点 · 9:16 · <strong>真实感条款</strong>（README §0c）· <strong>无字幕护栏</strong>（README §1）· <strong>照片级真人 + 眨眼</strong>（README §2）</p></blockquote>
+<p><strong>分镜时长：每镜 4–15s。</strong> 台词太长塞不进 15s → <strong>拆成两镜</strong>。</p>
+<h3 class="mdh">台词镜 — 走「静音生成 + 合声」</h3>
+<blockquote><p>🔴 <strong>不要用原生讲话。</strong> 详见 README §4.5。原生 <code>generate_audio=true</code> 会<strong>烤字幕 + 声音每镜飘</strong>。<br><br>正解：<strong>先 TTS 出这句的音频 → <code>generate_audio=false</code> + <code>audio_references=&lt;该句TTS&gt;</code> + 脸参考 → <code>duration = round(音频秒数)</code></strong>。<br><br>🔴 <strong><code>round</code>，不是 <code>ceil</code></strong> —— ceil 会把嘴型摊长，越到后面越拖（实测 12.23s 设 13 就飘，设 12 就准）。</p></blockquote>
+<h3 class="mdh">B-roll 镜</h3>
+<p><strong>无脸真实近景</strong>，show 那句台词点名的东西本身。不放主播、不要口型（<code>generate_audio=false</code>，不给 <code>audio_references</code>）。详见 README §4。</p>
+<h3 class="mdh">每镜模板</h3>
+<pre><code>SHOT [N] ([start]–[end]s, [length]s) — [镜头名]
+[锁定人物重述] in [选定地点]. [动作]. [运镜 + 镜头 + 焦段]. [特效(如有)].
+Natural true-to-life lighting.
+&lt;真实感条款 · README §0c&gt;
+&lt;无字幕护栏 · README §1&gt;
+&lt;照片级真人 + 眨眼 · README §2&gt;
+Aspect ratio 9:16.</code></pre>
+<p><strong>规则：</strong></p>
+<ul><li><strong>每镜重述锁定人物</strong>（或提醒带参考图）→ 脸不跑样。</li><li>特效写精确（&quot;speed ramp (deceleration)&quot;、&quot;slow-motion ~25% speed&quot;、&quot;rack focus&quot;），别只写 &quot;slow-mo&quot;。<strong>台词镜保持干净</strong>，嘴型才读得出来。</li><li>做<strong>对比</strong>；点出<strong>一个 signature shot</strong>（标 <code>← SIGNATURE SHOT</code>）。收尾干净（通常 产品 / logo / CTA）。</li><li><strong>先跑 1 镜验证</strong>（480p）：确认「声音 + 无字幕 + 眨眼 + 脸」→ OK 才批量。<strong>别一次跑完 8 镜。</strong></li></ul>
+<p><strong>特效词汇：</strong> speed ramp (accel/decel) · slow-motion (给 %) · whip pan · motion-blur smear · rack/focus pull · digital zoom · zoom pump · frame rotation (给 °) · white bloom flash · match cut · gimbal tracking · push-in / pull-back</p>
+<hr>
+<h2 class="mdh">交给下一段</h2>
+<p>拼接完 → <strong>进 ChatCut 后期</strong>：字幕 / 花字 / 音效 / BGM。见 <code>CHATCUT-SKILL.md</code> + <code>SOP-AI自动剪辑.md</code>（本包同目录）。</p>
+<hr>
+<h2 class="mdh">快速规则</h2>
+<ul><li>拿到 script 直接开始，不问、不给菜单</li><li><strong>永远 3 步，不跳步</strong>；每步结束<strong>等确认</strong></li><li>每一句中英双语；只有 code block 的 prompt 纯英文</li><li>script 里有的别再问</li><li>九宫格 = <strong>9 个不同的人</strong>（不同脸）；<strong>停下等号码</strong></li><li>定妆照<strong>必须点名号码</strong>，否则糊成平均脸</li><li><strong>规则以 README 为准</strong> —— 这份只管流程</li><li>台词镜走<strong>静音 + 合声</strong>，<code>duration = round(音频秒)</code></li><li><strong>先验 1 镜再批量</strong>；480p + fast</li></ul></div>
